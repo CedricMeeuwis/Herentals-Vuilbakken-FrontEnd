@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserLogin } from '../models/user-login';
 import { User } from '../../shared/models/user';
@@ -11,7 +11,7 @@ export class AuthenticateService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  userUrl = "https://localhost:44348/api/User";
+  userUrl = "https://localhost:44374/api/User";
 
   authenticate(userLogin: UserLogin): Observable<User> {
     return this._httpClient.post<User>(this.userUrl + "/authenticate", userLogin);
