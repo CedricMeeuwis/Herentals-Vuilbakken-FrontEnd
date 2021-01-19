@@ -10,20 +10,19 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class LoginComponent implements OnInit {
   userLogin : UserLogin = new UserLogin('', '');
+  errorMessage = "";
 
   constructor(private _authenticateService : AuthenticateService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  onLogin() {
+  onSubmit() {
+    this.errorMessage = "";
     this._authenticateService.authenticate(this.userLogin).subscribe(result => {
-      console.log(result);
       localStorage.setItem("token", result.token);
-
-
       this.router.navigate(['/']);
     }, error => {
-      console.log("Login attempt failed");
+      this.errorMessage = "Login attempt failed";
     });
   }
 }
