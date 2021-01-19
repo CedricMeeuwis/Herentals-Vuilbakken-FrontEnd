@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SmartcityHerentals"
+    }
+  },
+  "defaultProject": "SmartcityHerentals",
+  "cli": {
+    "analytics": "7a2c85ba-0163-4329-852f-c27a7050b308"
+  }
 }
