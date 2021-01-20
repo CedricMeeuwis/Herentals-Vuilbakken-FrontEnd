@@ -8,6 +8,7 @@ import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     LoginModule,
     SharedModule,
+    AccountModule,
     AppRoutingModule,
     NgbModule
   ],
