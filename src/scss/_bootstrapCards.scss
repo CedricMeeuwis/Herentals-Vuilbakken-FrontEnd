@@ -100,7 +100,11 @@
   }
 
   
-
+  .btn:visited{
+    color: $wit;
+    background: $primaryGreen !important;
+    border: $primaryGreen !important;
+  }
   
   .btn:hover{
     color: $wit;
@@ -126,7 +130,11 @@
     border: $primaryGreen !important;
   }
   
-
+  .btn-primary:visited{
+    color: $wit;
+    background: $primaryGreen !important;
+    border: $primaryGreen !important;
+  }
   
   .btn-primary:hover{
     color: $wit;

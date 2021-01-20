@@ -5,8 +5,8 @@
   <nav *ngIf="isMobile && overlayOn" class="mobile-nav d-lg-none">
     <ul>
       <li><a (click)="clickLink()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-      <li *ngIf="myRole == ''"><a class="btn btn-primary" (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
-      <li *ngIf="myRole != ''"><a class="btn btn-primary" (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
+      <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
+      <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
     </ul>
   </nav>
   <header id="header" class="fixed-top ">
