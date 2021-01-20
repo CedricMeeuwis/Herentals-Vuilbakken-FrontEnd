@@ -28,9 +28,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss",
+              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/vendor/boxicons/css/boxicons.min.css",
+              "src/assets/vendor/icofont/icofont.min.css",
+              "src/assets/vendor/remixicon/remixicon.css",
+              "src/assets/vendor/owl.carousel/assets/owl.carousel.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/main.js",
+              "src/assets/vendor/jquery.easing/jquery.easing.min.js",
+              "src/assets/vendor/waypoints/jquery.waypoints.min.js",
+              "src/assets/vendor/counterup/counterup.min.js",
+              "src/assets/vendor/venobox/venobox.min.js",
+              "src/assets/vendor/owl.carousel/owl.carousel.min.js",
+              "src/assets/vendor/isotope-layout/isotope.pkgd.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,9 +106,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss",
+              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/vendor/boxicons/css/boxicons.min.css",
+              "src/assets/vendor/icofont/icofont.min.css",
+              "src/assets/vendor/remixicon/remixicon.css",
+              "src/assets/vendor/owl.carousel/assets/owl.carousel.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/main.js",
+              "src/assets/vendor/jquery.easing/jquery.easing.min.js",
+              "src/assets/vendor/waypoints/jquery.waypoints.min.js",
+              "src/assets/vendor/counterup/counterup.min.js",
+              "src/assets/vendor/venobox/venobox.min.js",
+              "src/assets/vendor/owl.carousel/owl.carousel.min.js",
+              "src/assets/vendor/isotope-layout/isotope.pkgd.min.js"
+            ]
           }
         },
         "lint": {
