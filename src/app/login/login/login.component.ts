@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     this.errorMessage = "";
     this._authenticateService.authenticate(this.userLogin).subscribe(result => {
       localStorage.setItem("token", result.token);
+      this._authenticateService.getRole();
       this.router.navigate(['/']);
     }, error => {
       this.errorMessage = "Login attempt failed";
