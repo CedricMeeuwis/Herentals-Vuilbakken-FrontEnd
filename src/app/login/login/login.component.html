@@ -1,6 +1,12 @@
-<form  #loginForm="ngForm" (ngSubmit)="onSubmit()">
-    <input matInput placeholder="Username" type="text" required minlength="2" [(ngModel)]="userLogin.username" name="username" />
-    <input matInput placeholder="Wachtwoord" type="wachtwoord" required [(ngModel)]="userLogin.wachtwoord" name="wachtwoord" />
-    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Log in</button>
-    <div *ngIf="errorMessage">{{errorMessage}}</div>
-</form>
+  <!-- ======= Hero Section ======= -->
+  <section id="general">
+    <div class="general-container" data-aos="fade-up" data-aos-delay="150">
+        <form  #loginForm="ngForm" (ngSubmit)="onSubmit()">
+            <input matInput placeholder="Username" type="text" required minlength="2" [(ngModel)]="userLogin.username" name="username" />
+            <input matInput placeholder="Wachtwoord" type="wachtwoord" required [(ngModel)]="userLogin.wachtwoord" name="wachtwoord" />
+            <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Log in</button>
+            <div *ngIf="errorMessage">{{errorMessage}}</div>
+        </form>        
+    </div>
+  </section><!-- End Hero -->
+
