@@ -1,11 +1,12 @@
   <!-- ======= Header ======= -->
+  <div class="bootstrapCard">
   <button (click)="changeOverlay()" *ngIf="isMobile && !overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
   <button (click)="changeOverlay()" *ngIf="isMobile && overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-close"></i></button>
   <nav *ngIf="isMobile && overlayOn" class="mobile-nav d-lg-none">
     <ul>
       <li><a (click)="clickLink()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-      <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
-      <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
+      <li *ngIf="myRole == ''"><a class="btn btn-primary" (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
+      <li *ngIf="myRole != ''"><a class="btn btn-primary" (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
     </ul>
   </nav>
   <header id="header" class="fixed-top ">
@@ -16,8 +17,9 @@
           <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
         </ul>
       </nav><!-- .nav-menu -->
-      <a *ngIf="!isMobile && myRole == ''" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="get-started-btn scrollto">Login</a>
-      <a *ngIf="!isMobile && myRole != ''" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="get-started-btn scrollto">Account</a>
+      <a *ngIf="!isMobile && myRole == ''" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Login</a>
+      <a *ngIf="!isMobile && myRole != ''" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Account</a>
     </div>
   </header><!-- End Header -->
   <div *ngIf="isMobile && overlayOn" class="mobile-nav-overly"></div>
+  </div>

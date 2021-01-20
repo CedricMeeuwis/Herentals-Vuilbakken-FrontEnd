@@ -8,6 +8,10 @@
     padding: 20px 0;
     background-color: rgba(13, 20, 26, 0.7);
   }
+
+  #header a {
+    text-decoration: none !important;
+  }
   
   #header.header-scrolled, #header.header-inner-pages {
     background: #757780;
@@ -25,6 +29,10 @@
   
   #header .logo a {
     color: #fff;
+  }
+
+  #header .logo a:hover{
+    color: $primaryGreen;
   }
   
   #header .logo img {
@@ -45,6 +53,10 @@
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  .nav-menu a{
+    text-decoration: none !important;
   }
   
   .nav-menu > ul {
@@ -167,25 +179,7 @@
       content: "\ea9d";
     }
   }
-  
-  /* Get Startet Button */
-  .get-started-btn {
-    margin-left: 25px;
-    color: #fff;
-    border-radius: 4px;
-    padding: 8px 25px;
-    white-space: nowrap;
-    transition: 0.3s;
-    font-size: 14px;
-    display: inline-block;
-    border: 2px solid #fff;
-  }
-  
-  .get-started-btn:hover {
-    background: $primaryGreen;
-    color: #fff;
-    border-color: $primaryGreen;
-  }
+
   
   @media (max-width: 768px) {
     .get-started-btn {

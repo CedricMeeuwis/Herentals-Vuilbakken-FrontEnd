@@ -1,0 +1,160 @@
+@import "./variables";
+
+.card-margin{
+  margin-bottom: 10px !important;
+}
+
+.links{
+  a{
+    color: $primaryGreen !important;
+  }
+
+  a:hover{
+    color: $primaryGreen !important;
+  }
+  
+  ul{
+    list-style: disc;
+    text-align: left !important;
+  }
+
+
+}
+
+.publish {
+	color: $info !important;
+}
+.publish:hover {
+    color: $infoHover !important;
+    cursor: pointer;
+}
+
+.delete {
+  color: $deleteColor !important;
+  float: right;
+}
+.delete:hover {
+    color: $deleteHover !important;
+    cursor: pointer;
+}
+
+.number{
+  padding-bottom: 2px !important;
+}
+.bootstrapCard{
+
+    .text-primary {
+      color: $primaryGreen !important;
+    }
+    
+    .icon-box {
+      margin-bottom: 20px;
+    }
+
+    .card-header{
+        background-color: $primaryGreen !important;
+        color: $wit !important;
+    }
+
+    .card-title{
+        font-size: 22px;
+        color: $primaryGreen !important;
+    }
+    
+    .icon {
+      float: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background: $primaryGreen;
+      border-radius: 50%;
+      transition: 0.5s;
+      border: 1px solid $primaryGreen;
+    }
+    
+    .icon i {
+      color: $wit;
+      font-size: 24px;
+    }
+    
+    .icon-box:hover .icon {
+      background: $creamHover !important;
+    }
+    
+    .icon-box:hover .icon i {
+      color: $creamHover !important;
+    }
+    
+    .description {
+      margin-left: 80px;
+      line-height: 24px;
+      font-size: 14px;
+    }
+
+.btn{
+    color: $wit;
+    background: $primaryGreen !important;
+    border: $primaryGreen !important;
+  }
+
+  
+
+  
+  .btn:hover{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  
+  .btn:active{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  
+  .btn:focus{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  
+  .btn-primary{
+    color: $wit;
+    background: $primaryGreen !important;
+    border: $primaryGreen !important;
+  }
+  
+
+  
+  .btn-primary:hover{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  
+  .btn-primary:active{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  
+  .btn-primary:focus{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  
+  .btn:active:focus{
+     color: $wit;
+     background: $primaryGreenHover !important; 
+     border: $primaryGreenHover;
+   }
+  
+  .btn-primary:active:focus{
+    color: $wit;
+    background: $primaryGreenHover !important;
+    border: $primaryGreenHover !important;
+  }
+  }
