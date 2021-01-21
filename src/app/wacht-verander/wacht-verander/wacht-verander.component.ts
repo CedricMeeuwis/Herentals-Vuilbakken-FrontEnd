@@ -32,7 +32,7 @@ export class WachtVeranderComponent implements OnInit {
     this._authenticateService.authenticate(userLogin).subscribe(e =>{
       this.currentUser.wachtwoord = this.nieuwWW;
       this._authenticateService.userChange(this.currentUser).subscribe(f =>{
-        localStorage.removeItem("token");
+        this._authenticateService.logOut();
         this.router.navigate(["/login"]);
       });
     }, error =>{
