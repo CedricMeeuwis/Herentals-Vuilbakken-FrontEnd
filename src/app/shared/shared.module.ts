@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {HomeComponent} from '../home/home.component';
+import { HomeComponent } from '../home/home.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -10,10 +11,12 @@ import {HomeComponent} from '../home/home.component';
   ],
   imports: [
     CommonModule,
+    MatProgressSpinnerModule,
     FormsModule,
   ],
   exports: [
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

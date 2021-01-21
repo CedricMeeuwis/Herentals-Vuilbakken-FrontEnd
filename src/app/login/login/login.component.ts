@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(private _authenticateService : AuthenticateService, private router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("token") != null){
+      this.router.navigate(['/account']);
+    }
   }
   onSubmit() {
     this.errorMessage = "";
