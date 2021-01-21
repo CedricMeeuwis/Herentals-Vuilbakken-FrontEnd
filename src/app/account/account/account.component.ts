@@ -19,10 +19,15 @@ export class AccountComponent implements OnInit {
       var data = decode(localStorage.getItem("token"));
       this.currentUser = new User(data["Username"], "", data["UserID"]);
       this.role = data["Role"];
+    }else{
+      this.router.navigate(['/login']);
     }
   }
   logOut(){
     this._authenticateService.logOut();
     this.router.navigate(['/']);
+  }
+  changeWacht(){
+    this.router.navigate(['/wachtVerandering']);
   }
 }
