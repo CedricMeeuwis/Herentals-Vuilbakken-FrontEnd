@@ -12,6 +12,7 @@ export class AuthenticateService {
   role = new BehaviorSubject<string>("");
 
   constructor(private _httpClient: HttpClient) { }
+
   getRole(){
     if (localStorage.getItem("token") != null) {
       this.role.next(decode(localStorage.getItem("token"))["Role"]);
@@ -25,7 +26,12 @@ export class AuthenticateService {
   authenticate(userLogin: UserLogin): Observable<User> {
     return this._httpClient.post<User>(this.userUrl + "/authenticate", userLogin);
   }
-
+  userChange(user: User): Observable<User>{
+    return this._httpClient.put<User>(this.userUrl + "/" + user.userID, user);
+  }
+  getUser(id: Number){
+    return this._httpClient.get<User>(this.userUrl + "/" + id);
+  }
   logOut(){
     localStorage.removeItem("token");
     this.role.next("");
