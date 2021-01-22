@@ -6,7 +6,7 @@
     transition: all 0.5s;
     z-index: 997;
     padding: 20px 0;
-    background-color: $darkGrey;
+    background-color: $darkBlue;
   }
 
   #header a {
@@ -15,7 +15,7 @@
   }
   
   #header.header-scrolled, #header.header-inner-pages {
-    background: #757780;
+    background: $darkBlue;
     padding: 12px 0;
   }
   
