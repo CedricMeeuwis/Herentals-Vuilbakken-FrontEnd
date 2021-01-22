@@ -1,25 +1,35 @@
-  <!-- ======= Header ======= -->
-  <div class="bootstrapCard">
-  <button (click)="changeOverlay()" *ngIf="isMobile && !overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
-  <button (click)="changeOverlay()" *ngIf="isMobile && overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-close"></i></button>
-  <nav *ngIf="isMobile && overlayOn" class="mobile-nav d-lg-none">
-    <ul>
-      <li><a (click)="clickLink()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-      <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
-      <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
-    </ul>
-  </nav>
-  <header id="header" class="fixed-top ">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Smart City</a></h1>
-      <nav *ngIf="!isMobile" class="nav-menu d-none d-lg-block">
+    <!-- ======= Header ======= -->
+    <div class="container">
+    <div class="bootstrapCard">
+       <div class="row">
+      <button (click)="changeOverlay()" *ngIf="isMobile && !overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
+      <button (click)="changeOverlay()" *ngIf="isMobile && overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-close"></i></button>
+      <nav *ngIf="isMobile && overlayOn" class="mobile-nav d-lg-none">
         <ul>
-          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+          <li><a (click)="clickLink()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+          <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
+          <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
         </ul>
-      </nav><!-- .nav-menu -->
-      <a *ngIf="!isMobile && myRole == ''" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Login</a>
-      <a *ngIf="!isMobile && myRole != ''" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Account</a>
+      </nav>
+      <header id="header" class="fixed-top ">
+        <div class="container-fluid d-flex ">
+          <div class="col-12 col-xs-4 col-sm-4 col-md-4 text-left">
+          <h1 class="logo"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Smart City</a></h1>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+          <nav *ngIf="!isMobile" class="nav-menu d-none d-lg-block">
+            <ul>
+              <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+            </ul>
+          </nav><!-- .nav-menu -->
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 text-right">
+          <a *ngIf="!isMobile && myRole == ''" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Login</a>
+          <a *ngIf="!isMobile && myRole != ''" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Account</a>
+        </div>
+      </div>
+      </header><!-- End Header -->
+      <div *ngIf="isMobile && overlayOn" class="mobile-nav-overly"></div>
+      </div>
     </div>
-  </header><!-- End Header -->
-  <div *ngIf="isMobile && overlayOn" class="mobile-nav-overly"></div>
   </div>

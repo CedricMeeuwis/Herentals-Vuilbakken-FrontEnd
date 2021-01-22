@@ -11,6 +11,7 @@
 
   #header a {
     text-decoration: none !important;
+    position: relative; 
   }
   
   #header.header-scrolled, #header.header-inner-pages {
@@ -53,6 +54,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    text-align: center !important;
   }
 
   .nav-menu a{
@@ -61,11 +63,13 @@
   
   .nav-menu > ul {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .nav-menu > ul > li {
-    position: relative;
-    white-space: nowrap;
+   position: relative;
+   white-space: nowrap;
     padding: 10px 12px;
   }
   
