@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit {
   }
   changeOverlay(){
     this.overlayOn = !this.overlayOn;
-    console.log(this.overlayOn + " - " + this.isMobile);
   }
   @HostListener('window:resize', ['$event'])
   onResize(event) {
