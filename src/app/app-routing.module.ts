@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthUserGuard] },
   { path: 'wachtVerandering', component: WachtVeranderComponent, canActivate: [AuthUserGuard] },
-  { path: 'vuilbakken', component: VuilbakkenComponent, canActivate: [AuthUserGuard] },
+  { path: 'vuilbakken', component: VuilbakkenComponent },
 ];
 
 @NgModule({

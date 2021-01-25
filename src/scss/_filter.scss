@@ -1,0 +1,20 @@
+@import "./variables";
+
+.filterCard{
+    padding-bottom: 50px;
+}
+
+.filterCard .card-header{
+    background-color: $primaryGreenHover !important;
+}
+
+.filterCard h1{
+    font-weight: bold !important;
+}
+
+.row {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+
+
