@@ -21,7 +21,7 @@ export class AuthenticateService {
     }
   }
 
-  userUrl = "https://localhost:44374/api/User";
+  userUrl = "https://cit-app-service.azurewebsites.net/api/User";
 
   authenticate(userLogin: UserLogin): Observable<User> {
     return this._httpClient.post<User>(this.userUrl + "/authenticate", userLogin);
@@ -29,8 +29,26 @@ export class AuthenticateService {
   userChange(user: User): Observable<User>{
     return this._httpClient.put<User>(this.userUrl + "/" + user.userID, user);
   }
-  getUser(id: Number){
+  getUser(id: number){
     return this._httpClient.get<User>(this.userUrl + "/" + id);
+  }
+  isAdmin(){
+    if(localStorage.getItem("token") != null && decode(localStorage.getItem("token"))["Role"] == "Admin"){
+      return true;
+    }
+    return false;
+  }
+  isOphaler(){
+    if(localStorage.getItem("token") != null && decode(localStorage.getItem("token"))["Role"] == "Ophaler"){
+      return true;
+    }
+    return false;
+  }
+  isLoggedIn(){
+    if(localStorage.getItem("token") != null){
+      return true;
+    }
+    return false;
   }
   logOut(){
     localStorage.removeItem("token");
