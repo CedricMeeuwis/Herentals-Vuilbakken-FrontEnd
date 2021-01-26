@@ -58,7 +58,11 @@
 
     .card-title{
         font-size: 22px;
-        color: $primaryGreen !important;
+        color: $darkBlueTextColor !important;
+    }
+
+    .card-footer{
+      color: $darkBlueTextColor;
     }
     
     .icon {

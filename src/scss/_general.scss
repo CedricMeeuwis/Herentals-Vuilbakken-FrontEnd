@@ -24,6 +24,7 @@ body {
   section {
     padding: 60px 0;
     overflow: hidden;
+    padding-top: 10% !important;
   }
   
   .section-bg {
@@ -42,7 +43,7 @@ body {
     margin: 0 0 5px 0;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #5c8eb0;
+    color: $lightBlueTextColor;
     font-family: "Poppins", sans-serif;
   }
   
@@ -51,7 +52,7 @@ body {
     width: 120px;
     height: 1px;
     display: inline-block;
-    background: #7CA982;
+    background: $primaryGreen;
     margin: 4px 10px;
   }
   
@@ -62,10 +63,19 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     font-family: "Poppins", sans-serif;
-    color: #263d4d;
+    color: $darkBlueTextColor;
   }
 
-  #general {
-
-    padding-top: 7.5rem;
+  a {
+    color: $primaryGreen;
   }
+  
+  a:hover {
+    color: $primaryGreen;
+    text-decoration: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+  }
+  
