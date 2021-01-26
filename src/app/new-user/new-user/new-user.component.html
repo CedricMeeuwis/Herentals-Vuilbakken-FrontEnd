@@ -1,0 +1,33 @@
+<section>
+    <div class="container">
+        <div class="section-title mt-5">
+            <h2>Nieuwe gebruiker</h2>
+        </div>
+        <form #userForm="ngForm" (ngSubmit)="makeNew()">
+            <div class="form-group">
+                <label for="uname">Gebruikersnaam</label>
+                <input [(ngModel)]="newUser.username" name="unaam" type="text" class="form-control" id="uname" placeholder="Gebruikersnaam" required>
+            </div>
+            <div class="form-group">
+                <label for="ww">Wachtwoord</label>
+                <input [(ngModel)]="newUser.wachtwoord" name="wachtw" type="password" class="form-control" id="ww" placeholder="Gebruikersnaam" required>
+            </div>
+            <div class="form-group">
+                <label for="rol">Rollen</label>
+                <select [(ngModel)]="newUser.roleID" name="rol" class="form-control" id="rol" aria-label="Rol" required>
+                    <option *ngFor="let role of allRoles" ([ngModel])="newUser.roleID" [value]="role.roleID">
+                      {{role.naam}}
+                    </option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 text-center text-sm-left mt-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Nieuwe maken</button>
+                </div>
+                <div class="col-12 col-sm-6 text-center text-sm-right mt-2">
+                    <button class="btn btn-secondary" (click)="terug()">Annuleren</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

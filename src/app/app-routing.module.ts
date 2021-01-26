@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login/login.component';
 import { AccountComponent } from './account/account/account.component';
 import { WachtVeranderComponent } from './wacht-verander/wacht-verander/wacht-verander.component';
 import { VuilbakkenComponent } from './vuilbakken/vuilbakken/vuilbakken.component';
+import { UserManageComponent } from './user-manage/user-manage/user-manage.component';
+import { NewUserComponent } from './new-user/new-user/new-user.component';
 
 import { AuthAdminGuard } from './login/guards/auth-admin.guard';
 import { AuthOphalerGuard } from './login/guards/auth-ophaler.guard';
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [AuthUserGuard] },
   { path: 'wachtVerandering', component: WachtVeranderComponent, canActivate: [AuthUserGuard] },
   { path: 'vuilbakken', component: VuilbakkenComponent, canActivate: [AuthUserGuard] },
+  { path: 'gebruikers', component: UserManageComponent, canActivate: [AuthAdminGuard] },
+  { path: 'nieuwe-gebruiker', component: NewUserComponent, canActivate: [AuthAdminGuard] },
 ];
 
 @NgModule({

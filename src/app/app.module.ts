@@ -13,6 +13,8 @@ import { HeaderComponent } from './header/header.component';
 import { AccountModule } from './account/account.module';
 import { WachtVeranderModule } from './wacht-verander/wacht-verander.module';
 import { VuilbakkenModule } from './vuilbakken/vuilbakken.module';
+import { UserManageModule } from './user-manage/user-manage.module';
+import { NewUserModule } from './new-user/new-user.module';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -29,7 +31,9 @@ import { FooterComponent } from './footer/footer.component';
     AccountModule,
     WachtVeranderModule,
     VuilbakkenModule,
+    UserManageModule,
     AppRoutingModule,
+    NewUserModule,
     NgbModule,
     BrowserAnimationsModule
   ],
