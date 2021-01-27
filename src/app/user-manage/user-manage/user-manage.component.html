@@ -1,93 +1,111 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
   integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-<div>
-    <section>
-        <div class="container">
-            <div class="section-title mt-5">
-                <h2>Gebruikers</h2>
-                <p>Overzicht van alle gebruikers<br/>(exclusief u)</p>
+<div class="vuilnisbakken">
+  <section id="general" class="bootstrapCard">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Gebruikers</h2>
+        <p>Overzicht gebruikers</p>
+      </div>
+
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>Gebruikers</h4>
+              </div>
+              <div class="col-sm-6">
+                <button class="modal-title" (click)="navigateNieuw()" class="btn btn-success" data-toggle="modal"><i
+                    class="material-icons">&#xE147;</i><span>Toevoegen</span></button>
+              </div>
             </div>
-            <mat-spinner *ngIf="mijnUsers == null"></mat-spinner>
-            <table *ngIf="mijnUsers != null" mat-table [dataSource]="mijnUsers" class="mat-elevation-z8 w-100 w-sm-75">
-                <ng-container matColumnDef="username">
-                    <th mat-header-cell *matHeaderCellDef>Username</th>
-                    <td mat-cell *matCellDef="let user">{{user.username}}</td>
-                </ng-container>
-                <ng-container matColumnDef="role">
-                    <th mat-header-cell *matHeaderCellDef>Rol</th>
-                    <td mat-cell *matCellDef="let user">{{user.role.naam}}</td>
-                </ng-container>
-                <ng-container matColumnDef="edit">
-                    <th mat-header-cell *matHeaderCellDef>Edit</th>
-                    <td mat-cell *matCellDef="let user">
-                        <i (click)="open(edit, user)" class="icon fas fa-2x fa-pen"></i>
-                    </td>
-                </ng-container>
-                <ng-container matColumnDef="delete">
-                    <th mat-header-cell *matHeaderCellDef>Delete</th>
-                    <td mat-cell *matCellDef="let user">
-                        <i (click)="open(delete, user)" class="icon fas fa-2x fa-trash text-danger"></i>
-                    </td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <button (click)="navigateNieuw()" class="btn btn-primary mt-5">Nieuwe gebruiker</button>
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Gebruikersnaam</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Acties</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of mijnUsers">
+
+              <tr>
+                <td>{{user.username}}</td>
+                <td>{{user.role.naam}}</td>
+                <td>
+
+                  <a (click)="open(edit, user)" class="edit" data-toggle="modal"><i class="material-icons"
+                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+                  <a (click)="open(delete, user)" class="delete" data-toggle="modal"><i class="material-icons"
+                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-    </section>
+      </div>
+
+      <!--Modal voor delete-->
+      <ng-template #delete let-modal>
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-basic-title">Delete bevestiging</h2>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>U bent op het punt om <b>{{selectedUser.username}}</b> te verwijderen!</label>
+              <p>Gelieve om zijn gebruikersnaam in te geven voor bevestiging dat u deze gebruiker wilt verwijderen</p>
+              <div class="input-group">
+                <input *ngIf="selectedUser != null" [(ngModel)]="confirmDelete" class="form-control"
+                  placeholder="{{selectedUser.username}}" name="confirmName">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" (click)="deleteUser()"
+            [disabled]="confirmDelete != selectedUser.username">Verwijder</button>
+          <button type="button" class="btn btn-outline-dark" (click)="close()">Annuleren</button>
+        </div>
+      </ng-template>
+
+      <!--Modal voor edit-->
+      <ng-template #edit let-modal>
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-basic-title">Rol verandering</h2>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label class="h6">U bent de rol van <b>{{selectedUser.username}}</b> aan het veranderen</label>
+              <mat-spinner *ngIf="allRoles == null"></mat-spinner>
+              <div *ngIf="allRoles != null" class="input-group">
+                <select class="form-control" aria-label="Rol" name="rol" [(ngModel)]="selectedUser.roleID">
+                  <option *ngFor="let role of allRoles" [ngValue]="role.roleID">
+                    {{role.naam}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" (click)="updateUser()">Verander</button>
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Annuleren</button>
+        </div>
+      </ng-template>
+
+    </div>
+  </section>
 </div>
-
-<!--Modal voor delete-->
-<ng-template #delete let-modal>
-    <div class="modal-header">
-      <h2 class="modal-title" id="modal-basic-title">Delete bevestiging</h2>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label>U bent op het punt om <b>{{selectedUser.username}}</b> te verwijderen!</label>
-          <p>Gelieve om zijn gebruikersnaam in te geven voor bevestiging dat u deze gebruiker wilt verwijderen</p>
-          <div class="input-group">
-            <input *ngIf="selectedUser != null" [(ngModel)]="confirmDelete" class="form-control" placeholder="{{selectedUser.username}}" name="confirmName">
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-danger" (click)="deleteUser()" [disabled]="confirmDelete != selectedUser.username">Verwijder</button>
-      <button type="button" class="btn btn-outline-dark" (click)="close()">Annuleren</button>
-    </div>
-</ng-template>
-
-<!--Modal voor edit-->
-<ng-template #edit let-modal>
-    <div class="modal-header">
-      <h2 class="modal-title" id="modal-basic-title">Rol verandering</h2>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label class="h6">U bent de rol van <b>{{selectedUser.username}}</b> aan het veranderen</label>
-          <mat-spinner *ngIf="allRoles == null"></mat-spinner>
-          <div *ngIf="allRoles != null" class="input-group">
-            <select class="form-control" aria-label="Rol" name="rol" [(ngModel)]="selectedUser.roleID">
-              <option *ngFor="let role of allRoles" [ngValue]="role.roleID">
-                {{role.naam}}
-              </option>
-            </select>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-success" (click)="updateUser()">Verander</button>
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Annuleren</button>
-    </div>
-</ng-template>
