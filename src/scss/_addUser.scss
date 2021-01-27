@@ -1,0 +1,21 @@
+@import "./variables";
+
+.addUser .addUserButtons{
+    margin-top: 25px !important;
+}
+
+.addUser .addUserButtons .addButton{
+    background-color: $review !important;
+  }
+
+ .addUser .addUserButtons .addButton:hover{
+    background-color: $reviewHover !important;
+  }
+
+.addUser .addUserButtons .cancelButton{
+    background-color: $deleteColor !important;
+  }
+
+.addUser .addUserButtons .cancelButton:hover{
+    background-color: $deleteHover !important;
+  }

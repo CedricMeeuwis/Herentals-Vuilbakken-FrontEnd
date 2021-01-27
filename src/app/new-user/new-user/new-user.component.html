@@ -1,33 +1,61 @@
-<section>
-    <div class="container">
-        <div class="section-title mt-5">
-            <h2>Nieuwe gebruiker</h2>
-        </div>
-        <form #userForm="ngForm" (ngSubmit)="makeNew()">
-            <div class="form-group">
-                <label for="uname">Gebruikersnaam</label>
-                <input [(ngModel)]="newUser.username" name="unaam" type="text" class="form-control" id="uname" placeholder="Gebruikersnaam" required>
+<div class="addUser">
+    <section id="general" class="bootstrapCard">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Gebruikers</h2>
+                <p>Gebruiker toevoegen</p>
             </div>
-            <div class="form-group">
-                <label for="ww">Wachtwoord</label>
-                <input [(ngModel)]="newUser.wachtwoord" name="wachtw" type="password" class="form-control" id="ww" placeholder="Gebruikersnaam" required>
-            </div>
-            <div class="form-group">
-                <label for="rol">Rollen</label>
-                <select [(ngModel)]="newUser.roleID" name="rol" class="form-control" id="rol" aria-label="Rol" required>
-                    <option *ngFor="let role of allRoles" ([ngModel])="newUser.roleID" [value]="role.roleID">
-                      {{role.naam}}
-                    </option>
-                </select>
-            </div>
-            <div class="row">
-                <div class="col-12 col-sm-6 text-center text-sm-left mt-2">
-                    <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Nieuwe maken</button>
+
+
+                <div class="d-flex align-items-stretch card-margin d-flex justify-content-center">
+                    <div class="card" style="width: 23rem; height: 28rem;">
+                        <h4 class="card-header text-center">
+                            <a class="fa-stack fa-3x">
+                                <i class="fas fa-user-plus fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </h4>
+                        <div class="card-body shadow">
+                            <div class="d-flex justify-content-center form_container">
+                                <form #userForm="ngForm" (ngSubmit)="makeNew()">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input [(ngModel)]="newUser.username" name="unaam" type="text"
+                                            class="form-control" id="uname" placeholder="Gebruikersnaam" required />
+                                    </div>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                        </div>
+                                        <input [(ngModel)]="newUser.wachtwoord" name="wachtw" type="password"
+                                            class="form-control" id="ww" placeholder="Gebruikersnaam" required />
+                                    </div>
+                                    <div class="input-group mb-1" style="margin-top: 15px !important;">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                            <select [(ngModel)]="newUser.roleID" name="rol" class="form-control"id="rol" aria-label="Rol" style="min-width: 145% !important;" required>
+                                                <option *ngFor="let role of allRoles" ([ngModel])="newUser.roleID" [value]="role.roleID">
+                                                    {{role.naam}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row addUserButtons">
+                                        <div class="col-12 col-sm-6 text-center text-sm-left mt-2">
+                                            <button type="submit" class="btn btn-primary addButton"
+                                                [disabled]="!userForm.form.valid">Toevoegen</button>
+                                        </div>
+                                        <div class="col-12 col-sm-6 text-center text-sm-right mt-2">
+                                            <button class="btn btn-danger cancelButton" (click)="terug()">Annuleren</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-sm-6 text-center text-sm-right mt-2">
-                    <button class="btn btn-secondary" (click)="terug()">Annuleren</button>
-                </div>
             </div>
-        </form>
-    </div>
-</section>
+    </section>
+</div>
