@@ -18,7 +18,7 @@ export class VuilbakkenComponent implements OnInit {
   color: String;
   subTitle: String;
   brand: Boolean = true;
-  percentage = 40;
+  percentage = 80;
 
   constructor(private _vuilbakService: VuilbakService) { 
   this.cirkelUI();
@@ -26,12 +26,12 @@ export class VuilbakkenComponent implements OnInit {
 
   cirkelUI(){
     if(this.percentage >= 75){
-      this.color="#42BD50";
+      this.color="#F44336";
       this.subTitle="Ophalen"
     } else if(this.percentage <=75 && this.percentage >55){
       this.color="#FFC107";
       this.subTitle="Bijna vol";
-    } else if(this.percentage <=65){
+    } else if(this.percentage <=60){
       this.color="#42BD50";
       this.subTitle="Niet ophalen"
     }
