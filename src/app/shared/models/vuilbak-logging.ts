@@ -1,3 +1,5 @@
+import { Vuilbak } from "./vuilbak";
+
 export class VuilbakLogging {
     constructor(
         public volheid: number,
@@ -5,5 +7,6 @@ export class VuilbakLogging {
         public datum: Date,
         public vuilbakID?: number,
         public vuilbakLoggingID?: number,
+        public vuilbak?: Vuilbak,
     ){}
 }

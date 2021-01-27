@@ -39,13 +39,13 @@ export class VuilbakkenComponent implements OnInit {
 
   ngOnInit(): void {
     this._vuilbakService.getVuilbakken().subscribe(val =>{
-      console.log("1");
       this.BouwVuilbakkenOp(val);
       this.BouwLoggingOp();
     });
   }
   BouwVuilbakkenOp(data){
     //Haal alle vuilbakken op
+    this.vuilbakData = [];
     data.forEach(element => {
       this.vuilbakData.push(new VuilbakBinding(element));
     });
