@@ -3,6 +3,9 @@ import { VuilbakService } from '../vuilbak.service';
 import { VuilbakBinding } from '../../shared/models/vuilbak-binding';
 import { VuilbakLogging } from '../../shared/models/vuilbak-logging';
 import { Vuilbak } from '../../shared/models/vuilbak';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+
 
 @Component({
   selector: 'app-vuilbakken',
@@ -12,7 +15,27 @@ import { Vuilbak } from '../../shared/models/vuilbak';
 export class VuilbakkenComponent implements OnInit {
   vuilbakData: VuilbakBinding[];
 
-  constructor(private _vuilbakService: VuilbakService) { }
+  color: String;
+  subTitle: String;
+  brand: Boolean = true;
+  percentage = 40;
+
+  constructor(private _vuilbakService: VuilbakService) { 
+  this.cirkelUI();
+  }
+
+  cirkelUI(){
+    if(this.percentage >= 75){
+      this.color="#42BD50";
+      this.subTitle="Ophalen"
+    } else if(this.percentage <=75 && this.percentage >55){
+      this.color="#FFC107";
+      this.subTitle="Bijna vol";
+    } else if(this.percentage <=65){
+      this.color="#42BD50";
+      this.subTitle="Niet ophalen"
+    }
+  }
 
   ngOnInit(): void {
     this._vuilbakService.getVuilbakken().subscribe(val =>{

@@ -1,4 +1,3 @@
-
 <!--<div class="container mt-5">
     <mat-spinner *ngIf="vuilbakData == null"></mat-spinner>
     <mat-card *ngFor="let vuilbak of vuilbakData">
@@ -94,11 +93,14 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Huidig gewicht: "hier komt value gewicht"</h5>
-                            <p class="card-text">Spinner met percentage komt hier
+                            <p class="card-text align-items-center d-flex justify-content-center">
+                                <circle-progress [percent]="percentage" [radius]="100" [subtitle]="subTitle" [outerStrokeWidth]="16" titleFontSize='25' subtitleFontSize='20'
+                                 [innerStrokeWidth]="8" [outerStrokeColor]="color" [innerStrokeColor]="'#1B3C65'" 
+                                [animation]="true" [animationDuration]="300"></circle-progress>
                             </p>
                             <div>
                                 <iframe class="iFrame"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2502.1542155255365!2d4.959204951244759!3d51.16094624369584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c14c011b4bcb87%3A0xb5b970e9f2a6ce42!2sThomas%20More%20-%20Campus%20Geel!5e0!3m2!1snl!2sbe!4v1607263959906!5m2!1snl!2sbe"
+                                    src="https://maps.google.com/maps?q= 51.160989081938844, 4.961401173259756&z=15&output=embed"
                                     frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>

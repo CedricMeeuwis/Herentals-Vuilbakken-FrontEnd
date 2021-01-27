@@ -14,6 +14,7 @@ import { AccountModule } from './account/account.module';
 import { WachtVeranderModule } from './wacht-verander/wacht-verander.module';
 import { VuilbakkenModule } from './vuilbakken/vuilbakken.module';
 import { FooterComponent } from './footer/footer.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,15 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
   ],
   imports: [
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    }),
     BrowserModule,
     HttpClientModule,
     LoginModule,
