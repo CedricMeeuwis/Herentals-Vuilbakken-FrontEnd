@@ -30,12 +30,12 @@
                                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                                         </div>
                                         <input [(ngModel)]="newUser.wachtwoord" name="wachtw" type="password"
-                                            class="form-control" id="ww" placeholder="Gebruikersnaam" required />
+                                            class="form-control" id="ww" placeholder="Wachtwoord" required />
                                     </div>
                                     <div class="input-group mb-1" style="margin-top: 15px !important;">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                            <select [(ngModel)]="newUser.roleID" name="rol" class="form-control"id="rol" aria-label="Rol" style="min-width: 145% !important;" required>
+                                            <select [(ngModel)]="newUser.roleID" name="rol" class="form-control"id="rol" aria-label="Rol" style="min-width: 120% !important;" required>
                                                 <ng-container *ngFor="let role of allRoles">
                                                     <option *ngIf="role.naam != 'Admin' || mijnRol == 'Admin'"([ngModel])="newUser.roleID" [value]="role.roleID">
                                                         {{role.naam}}
