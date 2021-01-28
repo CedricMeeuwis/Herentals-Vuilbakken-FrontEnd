@@ -22,6 +22,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  logout(){
+    this._authService.logOut();
+    this.router.navigate(['/']);
+  }
+
+
   ngOnInit(): void {
     if(window.innerWidth < 992){
       this.isMobile = true;

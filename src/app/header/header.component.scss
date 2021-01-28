@@ -1,0 +1,10 @@
+@import "../../scss/variables";
+
+.profileIcon{
+    color: white;
+    margin-right: 20px !important;
+}
+
+.profileIcon:hover{
+    color: $primaryGreen !important;
+}
