@@ -41,28 +41,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row text-right">
-                                <div class="col-12">
-                                    <label for="brand">{{fireFilter ? "Vuilbakken in brand": "Normale vuilbakken"
-                                        }}</label>
-                                    <i (click)="toggleFire()" *ngIf="fireFilter == false"
-                                        class="fas fa-3x fa-fire-alt"></i>
-                                    <i (click)="toggleFire()" *ngIf="fireFilter == true"
-                                        class="fas fa-3x fa-fire-alt text-danger"></i>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="slider" class="form-label">Bereik voorspelling (dagen):
+                                        <b>{{maxWeekAantal}}</b></label><br />
+                                    <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxWeekAantal" name="slider"
+                                        class="form-range" id="slider">
+                                </div>
+                                <div class="col-6 align-items-center d-flex justify-content-center">
+                                 
+                                            <label for="brand">{{fireFilter ? "Vuilbakken in brand": "Normale vuilbakken"
+                                                }}</label>
+                                            <i (click)="toggleFire()" *ngIf="fireFilter == false"
+                                                class="fas fa-3x fa-fire-alt"></i>
+                                            <i (click)="toggleFire()" *ngIf="fireFilter == true"
+                                                class="fas fa-3x fa-fire-alt text-danger"></i>
+                               
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <label for="slider" class="form-label">Aantal voorbije dagen bij de voorspelling:
-                <b>{{maxWeekAantal}}</b></label><br />
-            <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxWeekAantal" name="slider"
-                class="form-range" id="slider">
             <div class="row">
                 <ng-container *ngFor="let vuilbak of vuilbakData; let i = index">
                     <ng-container
-                        *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
+                        *ngIf="vuilbak.vuilbak.brand == false && assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
                         <div *ngIf="vuilbak.vuilbak.straat.includes(straatFilter)
                                     && perc >= volhMin
                                     && perc <= volhMax
@@ -122,8 +126,39 @@
                             </div>
                         </div>
                     </ng-container>
+                    <ng-container
+                    *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
+                    <div *ngIf="vuilbak.vuilbak.brand == true"
+                        class="col-sm-12 col-md-12 col-lg-6">
+                        <div class="card shadow mt-5 bootstrapCardBrand">
+                            <div class="card-header">
+                                <p>
+                                    <i class="ri-map-pin-line"></i><span> {{vuilbak.vuilbak.straat}}</span>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                    <div class="col-lg-6 col-md-5 col-sm-8">
+                                        <h3 class="align-items-center d-flex justify-content-center">Brand!</h3>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                </div>
+                                    <div class="fireDumpster align-items-center d-flex justify-content-center">
+                                        <i class="fas fa-dumpster-fire fa-10x"></i>
+                                    </div>
+                                <div>
+                                    <iframe
+                                        *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
+                                        class="iFrame" [src]="frameUrls[i]" frameborder="0"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </ng-container>
-            </div>
+                </ng-container>
+            </div>            
         </div>
     </section>
 </div>
