@@ -15,11 +15,32 @@ h3{
     margin-bottom: 30px;
     border-radius: 50px;
     font-weight: bold !important;
+
   }
 
   .fireDumpster{
-      padding: 65px;
+      padding: 42px;
       color: $deleteColor !important;
+  }
+
+  .addUser .addUserButtons{
+    margin-top: 25px !important;
+}
+
+.overzichtVuilbakken .vuilbakKnop{
+    background-color: $review !important;
+  }
+
+.overzichtVuilbakken .vuilbakKnop{
+    background-color: $reviewHover !important;
+  }
+
+.overzichtVuilbakken .brandKnop{
+    background-color: $deleteColor !important;
+  }
+
+  .overzichtVuilbakken .brandKnop:hover{
+    background-color: $deleteHover !important;
   }
 
   input[type=range] {

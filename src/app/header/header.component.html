@@ -30,8 +30,9 @@
           </nav><!-- .nav-menu -->
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 text-right">
+          <a *ngIf="!isMobile && myRole != ''" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="profileIcon"><i class="fas fa-user fa-lg"></i></a>
           <a *ngIf="!isMobile && myRole == ''" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Login</a>
-          <a *ngIf="!isMobile && myRole != ''" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">Account</a>
+          <a *ngIf="!isMobile && myRole != ''"(click)="logout()" class="btn btn-primary">Logout</a>
         </div>
       </div>
       </header><!-- End Header -->

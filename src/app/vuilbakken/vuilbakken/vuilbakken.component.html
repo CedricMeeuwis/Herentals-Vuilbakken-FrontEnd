@@ -2,7 +2,7 @@
     integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
     crossorigin="anonymous" />
 
-<div class="crudUsers">
+<div class="overzichtVuilbakken">
     <section id="general" class="bootstrapCard">
         <div class="container">
             <div class="section-title">
@@ -48,15 +48,13 @@
                                     <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxWeekAantal" name="slider"
                                         class="form-range" id="slider">
                                 </div>
-                                <div class="col-6 align-items-center d-flex justify-content-center">
-                                 
-                                            <label for="brand">{{fireFilter ? "Vuilbakken in brand": "Normale vuilbakken"
-                                                }}</label>
-                                            <i (click)="toggleFire()" *ngIf="fireFilter == false"
-                                                class="fas fa-3x fa-fire-alt"></i>
-                                            <i (click)="toggleFire()" *ngIf="fireFilter == true"
-                                                class="fas fa-3x fa-fire-alt text-danger"></i>
-                               
+                                <div class="col-6 text-center">
+                                
+
+                                                <button (click)="toggleFire()" *ngIf="fireFilter == false" class="btn btn-danger brandKnop">Toon branden <i class="fas fa fa-fire-alt brandIcoon"></i></button>
+
+                                                <button (click)="toggleFire()" *ngIf="fireFilter == true" class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i class="fas fa-dumpster"></i></button>
+                    
                                 </div>
                             </div>
                         </div>
@@ -82,7 +80,7 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 col-sm-2"></div>
                                         <div class="col-lg-6 col-md-5 col-sm-8">
-                                            <h3 class="align-items-center d-flex justify-content-center">Huidig gewicht:
+                                            <h3 class="align-items-center d-flex justify-content-center shadow">Huidig gewicht:
                                                 {{vuilbak.vuilbak.gewicht}} gram</h3>
                                         </div>
                                         <div class="col-lg-3 col-md-4 col-sm-2"></div>
@@ -93,10 +91,10 @@
                                                 <h2 class="align-items-center d-flex justify-content-center">Huidige
                                                     waarde</h2>
                                                 <circle-progress
-                                                    class="align-items-center d-flex justify-content-center"
-                                                    [percent]="perc" [radius]="100" [subtitle]="getText(perc)"
-                                                    [outerStrokeWidth]="16" titleFontSize='25' subtitleFontSize='20'
-                                                    [innerStrokeWidth]="8" [outerStrokeColor]="getColor(perc)"
+                                                    class="align-items-center d-flex justify-content-center shadow"
+                                                    [percent]="perc" [radius]="100" [subtitle]="getText(perc)" [backgroundPadding]="0" [radius]="85"
+                                                    [outerStrokeWidth]="12" titleFontSize='25' subtitleFontSize='20'
+                                                    [innerStrokeWidth]="5" [outerStrokeColor]="getColor(perc)"
                                                     [innerStrokeColor]="'#1B3C65'" [animation]="true"
                                                     [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square">
                                                 </circle-progress>
@@ -105,10 +103,10 @@
                                                 <h2 class="align-items-center d-flex justify-content-center">
                                                     Voorspelling</h2>
                                                 <circle-progress
-                                                    class="align-items-center d-flex justify-content-center"
+                                                    class="align-items-center d-flex justify-content-center shadow"
                                                     [percent]="vuilbak.prediction" [radius]="100"
-                                                    [subtitle]="getText(vuilbak.prediction)" [outerStrokeWidth]="16"
-                                                    titleFontSize='25' subtitleFontSize='20' [innerStrokeWidth]="8"
+                                                    [subtitle]="getText(vuilbak.prediction)" [backgroundPadding]="0" [outerStrokeWidth]="12" [radius]="85"
+                                                    titleFontSize='25' subtitleFontSize='20' [innerStrokeWidth]="5"
                                                     [outerStrokeColor]="getColor(vuilbak.prediction)"
                                                     [innerStrokeColor]="'#1B3C65'" [animation]="true"
                                                     [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square">
@@ -119,7 +117,7 @@
                                     <div>
                                         <iframe
                                             *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
-                                            class="iFrame" [src]="frameUrls[i]" frameborder="0"
+                                            class="iFrame shadow" [src]="frameUrls[i]" frameborder="0"
                                             allowfullscreen></iframe>
                                     </div>
                                 </div>
@@ -140,7 +138,7 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 col-sm-2"></div>
                                     <div class="col-lg-6 col-md-5 col-sm-8">
-                                        <h3 class="align-items-center d-flex justify-content-center">Brand!</h3>
+                                        <h3 class="align-items-center d-flex justify-content-center shadow">Brand!</h3>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-2"></div>
                                 </div>
@@ -150,7 +148,7 @@
                                 <div>
                                     <iframe
                                         *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
-                                        class="iFrame" [src]="frameUrls[i]" frameborder="0"
+                                        class="iFrame shadow" [src]="frameUrls[i]" frameborder="0"
                                         allowfullscreen></iframe>
                                 </div>
                             </div>
