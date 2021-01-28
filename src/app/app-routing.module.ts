@@ -10,6 +10,7 @@ import { NewUserComponent } from './new-user/new-user/new-user.component';
 
 import { AuthAdminGuard } from './login/guards/auth-admin.guard';
 import { AuthOphalerGuard } from './login/guards/auth-ophaler.guard';
+import { AuthManagersGuard } from './login/guards/auth-managers.guard';
 import { AuthUserGuard } from './login/guards/auth-user.guard';
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [AuthUserGuard] },
   { path: 'wachtVerandering', component: WachtVeranderComponent, canActivate: [AuthUserGuard] },
   { path: 'vuilbakken', component: VuilbakkenComponent, canActivate: [AuthUserGuard] },
-  { path: 'gebruikers', component: UserManageComponent, canActivate: [AuthAdminGuard] },
+  { path: 'gebruikers', component: UserManageComponent, canActivate: [AuthManagersGuard] },
   { path: 'nieuwe-gebruiker', component: NewUserComponent, canActivate: [AuthAdminGuard] },
 ];
 

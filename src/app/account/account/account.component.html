@@ -3,19 +3,17 @@
 <div class="editAccount">
     <section id="general" class="bootstrapCard">
         <div class="container">
-
             <div class="section-title">
                 <h2>Account</h2>
                 <p>Bewerk mijn account</p>
             </div>
-
-
             <div class="d-flex align-items-stretch card-margin d-flex justify-content-center">
                 <div class="card" style="width: 23rem;">
                     <h4 class="card-header text-center">
                         <a class="fa-stack fa-3x">
                             <i *ngIf="role == 'Ophaler'" class="fas fa-hard-hat fa-stack-1x fa-inverse"></i>
                             <i *ngIf="role == 'Admin'" class="fas fa-user-cog fa-stack-1x fa-inverse"></i>
+                            <i *ngIf="role == 'Groendienst'" class="fas fa-recycle fa-stack-1x fa-inverse"></i>
                         </a>
                     </h4>
                     <div class="card-body shadow">

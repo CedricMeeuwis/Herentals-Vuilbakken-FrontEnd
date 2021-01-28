@@ -50,6 +50,12 @@ export class AuthenticateService {
     }
     return false;
   }
+  isGroendienst(){
+    if(localStorage.getItem("token") != null && decode(localStorage.getItem("token"))["Role"] == "Groendienst"){
+      return true;
+    }
+    return false;
+  }
   logOut(){
     localStorage.removeItem("token");
     this.role.next("");

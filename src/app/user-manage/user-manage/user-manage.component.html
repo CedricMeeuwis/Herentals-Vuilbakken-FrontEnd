@@ -9,8 +9,8 @@
         <h2>Gebruikers</h2>
         <p>Overzicht gebruikers</p>
       </div>
-
-      <div class="table-responsive">
+      <mat-spinner *ngIf="mijnUsers == null"></mat-spinner>
+      <div *ngIf="mijnUsers != null" class="table-responsive">
         <div class="table-wrapper">
           <div class="table-title">
             <div class="row">
@@ -32,17 +32,16 @@
               </tr>
             </thead>
             <tbody *ngFor="let user of mijnUsers">
-
               <tr>
                 <td>{{user.username}}</td>
                 <td>{{user.role.naam}}</td>
                 <td>
-
-                  <a (click)="open(edit, user)" class="edit" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-
-                  <a (click)="open(delete, user)" class="delete" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                  <a *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'" (click)="open(edit, user)" class="edit" data-toggle="modal">
+                    <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                  </a>
+                  <a *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'" (click)="open(delete, user)" class="delete" data-toggle="modal">
+                    <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -92,9 +91,11 @@
               <mat-spinner *ngIf="allRoles == null"></mat-spinner>
               <div *ngIf="allRoles != null" class="input-group">
                 <select class="form-control" aria-label="Rol" name="rol" [(ngModel)]="selectedUser.roleID">
-                  <option *ngFor="let role of allRoles" [ngValue]="role.roleID">
-                    {{role.naam}}
-                  </option>
+                  <ng-container *ngFor="let role of allRoles">
+                    <option *ngIf="role.naam != 'Admin' || mijnRol == 'Admin'" [ngValue]="role.roleID">
+                      {{role.naam}}
+                    </option>
+                  </ng-container>
                 </select>
               </div>
             </div>

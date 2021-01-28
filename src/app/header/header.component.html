@@ -9,7 +9,7 @@
           <li><a (click)="clickLink()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
           <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/vuilbakken" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vuilbakken</a></li>
           <li *ngIf="myRole != ''"><a (click)="clickLink()" href="https://yoriv.sinners.be/">Schemas</a></li>
-          <li *ngIf="myRole == 'Admin'"><a (click)="clickLink()" routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
+          <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a (click)="clickLink()" routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
           <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
           <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
         </ul>
@@ -22,10 +22,10 @@
         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
           <nav *ngIf="!isMobile" class="nav-menu d-none d-lg-block">
             <ul>
-              <li *ngIf="myRole != ''"><a href="https://yoriv.sinners.be/">Schemas</a></li>
               <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+              <li *ngIf="myRole != ''"><a href="https://visualisaties.netlify.app/">Schema's</a></li>
               <li *ngIf="myRole != ''"><a routerLink="/vuilbakken" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vuilbakken</a></li>
-              <li *ngIf="myRole == 'Admin'"><a routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
+              <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
             </ul>
           </nav><!-- .nav-menu -->
         </div>

@@ -20,6 +20,8 @@ export class UserManageComponent implements OnInit {
 
   selectedUser: User;
   confirmDelete = "";
+
+  mijnRol = "";
   constructor(private _userService: UserService, private router: Router, private modalService: NgbModal) { 
     _userService.users.subscribe(val => {
       this.mijnUsers = val;
@@ -30,6 +32,7 @@ export class UserManageComponent implements OnInit {
     if(localStorage.getItem('token') != null)
     {
       this.mijnId = decode(localStorage.getItem("token"))["UserID"];
+      this.mijnRol = decode(localStorage.getItem("token"))["Role"];
       this._userService.getUsers(this.mijnId);
     }else
     {
