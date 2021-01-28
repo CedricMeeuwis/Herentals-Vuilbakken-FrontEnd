@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'wachtVerandering', component: WachtVeranderComponent, canActivate: [AuthUserGuard] },
   { path: 'vuilbakken', component: VuilbakkenComponent, canActivate: [AuthUserGuard] },
   { path: 'gebruikers', component: UserManageComponent, canActivate: [AuthManagersGuard] },
-  { path: 'nieuwe-gebruiker', component: NewUserComponent, canActivate: [AuthAdminGuard] },
+  { path: 'nieuwe-gebruiker', component: NewUserComponent, canActivate: [AuthManagersGuard] },
 ];
 
 @NgModule({
