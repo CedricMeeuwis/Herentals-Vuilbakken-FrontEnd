@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { Role } from '../../shared/models/role';
 import { UserService } from '../../user-manage/user.service';
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-new-user',
@@ -13,10 +14,12 @@ export class NewUserComponent implements OnInit {
   allRoles: Role[];
   newUser: User = new User('','', 1);
 
+  mijnRol = "";
   constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('token') != null){
+      this.mijnRol = decode(localStorage.getItem('token'))['Role'];
       this._userService.getAllRoles().subscribe(val => {
         this.allRoles = val;
       });

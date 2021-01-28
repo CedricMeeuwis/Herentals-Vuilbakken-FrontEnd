@@ -25,8 +25,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("token", result.token);
       this._authenticateService.getRole();
       this.router.navigate(['/']);
-    }, error => {
-      this.errorMessage = "Login attempt failed";
+    }, err =>{
+      this.errorMessage = "Gebruikersnaam of wachtwoord is incorrect"
     });
+  }
+  setError(){
+    this.errorMessage = "Login attempt failed";
   }
 }
