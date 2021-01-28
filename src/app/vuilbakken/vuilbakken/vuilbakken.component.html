@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
 
 <div class="crudUsers">
     <section id="general" class="bootstrapCard">
@@ -10,16 +12,15 @@
             <div class="row filterCard">
                 <div class="col-12">
                     <div class="card shadow">
-                        <div class="card-header">
+                        <div class="card-body">
                             <h1>
                                 Filteren
                             </h1>
-                        </div>
-                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-8 col-12">
                                     <label for="title">Straat:</label>
-                                    <input type="text" [(ngModel)]="straatFilter" name="straat" class="form-control w-75"/>
+                                    <input type="text" [(ngModel)]="straatFilter" name="straat"
+                                        class="form-control w-75" />
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="row">
@@ -27,37 +28,46 @@
                                             <label for="title">Volheid tussen:</label>
                                         </div>
                                         <div class="col-4">
-                                            <input type="number" [(ngModel)]="volhMin" min="0" [max]="volhMax" step="5" name="nr1" class="form-control" />
+                                            <input type="number" [(ngModel)]="volhMin" min="0" [max]="volhMax" step="5"
+                                                name="nr1" class="form-control" />
                                         </div>
                                         <div class="col-auto text-center">
                                             <label for="title">en</label>
                                         </div>
                                         <div class="col-4">
-                                            <input type="number" [(ngModel)]="volhMax" [min]="volhMin" max="100" step="5" name="nr2" class="form-control" />
+                                            <input type="number" [(ngModel)]="volhMax" [min]="volhMin" max="100"
+                                                step="5" name="nr2" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row text-right">
                                 <div class="col-12">
-                                    <label for="brand">{{fireFilter ? "Vuilbakken in brand": "Normale vuilbakken" }}</label>
-                                    <i (click)="toggleFire()" *ngIf="fireFilter == false" class="fas fa-3x fa-fire-alt"></i>
-                                    <i (click)="toggleFire()" *ngIf="fireFilter == true" class="fas fa-3x fa-fire-alt text-danger"></i>
+                                    <label for="brand">{{fireFilter ? "Vuilbakken in brand": "Normale vuilbakken"
+                                        }}</label>
+                                    <i (click)="toggleFire()" *ngIf="fireFilter == false"
+                                        class="fas fa-3x fa-fire-alt"></i>
+                                    <i (click)="toggleFire()" *ngIf="fireFilter == true"
+                                        class="fas fa-3x fa-fire-alt text-danger"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <label for="slider" class="form-label">Aantal voorbije weken bij de voorspelling: <b>{{maxWeekAantal}}</b></label><br/>
-            <input type="range" min="1" max="10" (change)="BouwLoggingOp()" [(ngModel)]="maxWeekAantal" name="slider" class="form-range" id="slider">
+            <label for="slider" class="form-label">Aantal voorbije dagen bij de voorspelling:
+                <b>{{maxWeekAantal}}</b></label><br />
+            <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxWeekAantal" name="slider"
+                class="form-range" id="slider">
             <div class="row">
                 <ng-container *ngFor="let vuilbak of vuilbakData; let i = index">
-                    <ng-container *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
+                    <ng-container
+                        *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
                         <div *ngIf="vuilbak.vuilbak.straat.includes(straatFilter)
                                     && perc >= volhMin
                                     && perc <= volhMax
-                                    && (!fireFilter || fireFilter == vuilbak.vuilbak.brand)" class="col-sm-12 col-md-6">
+                                    && (!fireFilter || fireFilter == vuilbak.vuilbak.brand)"
+                            class="col-sm-12 col-md-12 col-lg-6">
                             <div class="card shadow mt-5">
                                 <div class="card-header">
                                     <p>
@@ -65,19 +75,48 @@
                                     </p>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Huidig gewicht: {{vuilbak.vuilbak.gewicht}}gr</h5>
-                                    <p class="card-text align-items-center d-flex justify-content-center">
-                                        <circle-progress [percent]="perc" [radius]="100" [subtitle]="getText(perc)" [outerStrokeWidth]="16" titleFontSize='25' subtitleFontSize='20'
-                                        [innerStrokeWidth]="8" [outerStrokeColor]="getColor(perc)" [innerStrokeColor]="'#1B3C65'" 
-                                        [animation]="true" [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square"></circle-progress>
-                                        <circle-progress [percent]="vuilbak.prediction" [radius]="100" [subtitle]="getText(vuilbak.prediction)" [outerStrokeWidth]="16" titleFontSize='25' subtitleFontSize='20'
-                                        [innerStrokeWidth]="8" [outerStrokeColor]="getColor(vuilbak.prediction)" [innerStrokeColor]="'#1B3C65'" 
-                                        [animation]="true" [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square"></circle-progress>
-                                    </p>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                        <div class="col-lg-6 col-md-5 col-sm-8">
+                                            <h3 class="align-items-center d-flex justify-content-center">Huidig gewicht:
+                                                {{vuilbak.vuilbak.gewicht}} gram</h3>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                    </div>
+                                    <div class="card-text align-items-center d-flex justify-content-center">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">
+                                                <h2 class="align-items-center d-flex justify-content-center">Huidige
+                                                    waarde</h2>
+                                                <circle-progress
+                                                    class="align-items-center d-flex justify-content-center"
+                                                    [percent]="perc" [radius]="100" [subtitle]="getText(perc)"
+                                                    [outerStrokeWidth]="16" titleFontSize='25' subtitleFontSize='20'
+                                                    [innerStrokeWidth]="8" [outerStrokeColor]="getColor(perc)"
+                                                    [innerStrokeColor]="'#1B3C65'" [animation]="true"
+                                                    [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square">
+                                                </circle-progress>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <h2 class="align-items-center d-flex justify-content-center">
+                                                    Voorspelling</h2>
+                                                <circle-progress
+                                                    class="align-items-center d-flex justify-content-center"
+                                                    [percent]="vuilbak.prediction" [radius]="100"
+                                                    [subtitle]="getText(vuilbak.prediction)" [outerStrokeWidth]="16"
+                                                    titleFontSize='25' subtitleFontSize='20' [innerStrokeWidth]="8"
+                                                    [outerStrokeColor]="getColor(vuilbak.prediction)"
+                                                    [innerStrokeColor]="'#1B3C65'" [animation]="true"
+                                                    [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square">
+                                                </circle-progress>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div>
-                                        <iframe *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null" class="iFrame"
-                                            [src]="frameUrls[i]"
-                                            frameborder="0" allowfullscreen></iframe>
+                                        <iframe
+                                            *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
+                                            class="iFrame" [src]="frameUrls[i]" frameborder="0"
+                                            allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>
