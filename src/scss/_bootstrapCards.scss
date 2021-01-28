@@ -170,3 +170,20 @@
     border: $primaryGreenHover !important;
   }
   }
+
+  .bootstrapCardBrand{
+    background: rgba($deleteColor , 0.1) !important;
+  }
+  
+  .bootstrapCardBrand .card-header{
+    background-color: $deleteColor !important;
+  }
+
+  .bootstrapCardBrand h3{
+    background: rgba($editColor , 0.4) !important;
+    color: $deleteHover !important;
+    padding: 10px 30px;
+    margin-bottom: 30px;
+    border-radius: 50px;
+    font-weight: bold !important;
+  }

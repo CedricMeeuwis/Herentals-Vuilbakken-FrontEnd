@@ -17,6 +17,11 @@ h3{
     font-weight: bold !important;
   }
 
+  .fireDumpster{
+      padding: 65px;
+      color: $deleteColor !important;
+  }
+
   input[type=range] {
     -webkit-appearance: none;
     margin: 10px 0;
