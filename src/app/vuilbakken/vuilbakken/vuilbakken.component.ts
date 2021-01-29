@@ -6,6 +6,7 @@ import { Vuilbak } from '../../shared/models/vuilbak';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
+import { AlertService } from '@full-fledged/alerts';
 
 
 @Component({
@@ -22,11 +23,12 @@ export class VuilbakkenComponent implements OnInit {
   volhMax = 100;
   fireFilter = false;
 
+  erIsBrand = false;
   //Aanpassen voor meer weken mee te meten
-  maxWeekAantal = 5;
+  maxDagAantal = 5;
 
   frameUrls: SafeResourceUrl[];
-  constructor(private _vuilbakService: VuilbakService, private sanitizer: DomSanitizer) { 
+  constructor(private _vuilbakService: VuilbakService, private sanitizer: DomSanitizer, private alertService: AlertService) { 
     this.frameUrls = [];
   }
   assignPercentage(n): number{
@@ -56,7 +58,12 @@ export class VuilbakkenComponent implements OnInit {
     }
     return "#42BD50";
   }
+  filterSearch(base: string, subs: string): boolean{
+    base = base.toLowerCase().replace(/\s/g, "");
+    subs = subs.toLowerCase().replace(/\s/g, "");
 
+    return(base.includes(subs));
+  }
   ngOnInit(): void {
     this._vuilbakService.getVuilbakken().subscribe(val =>{
       this.BouwVuilbakkenOp(val);
@@ -69,6 +76,9 @@ export class VuilbakkenComponent implements OnInit {
     data.forEach(element => {
       this.vuilbakData.push(new VuilbakBinding(element));
       this.buildUrl(element.breedtegraad, element.lengtegraad);
+      if(element.brand){
+        this.alertService.danger('Er is ergens brand gemeten!')
+      }
     });
   }
   BouwLoggingOp(){
@@ -84,7 +94,7 @@ export class VuilbakkenComponent implements OnInit {
     //Bereken gemiddeld verschil van volheid
     var pred = 0;
     var sum = 0;
-    var lngth = Math.min(this.maxWeekAantal, this.vuilbakData[i].logging.length);
+    var lngth = Math.min(this.maxDagAantal, this.vuilbakData[i].logging.length);
     var divider = Math.max(1, (lngth - 1));
     for(let j = 0; j < lngth-1; j++){
       //Verschillen berekenen
