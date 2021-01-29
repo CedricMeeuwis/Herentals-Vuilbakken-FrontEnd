@@ -11,7 +11,7 @@ import { AlertModule } from '@full-fledged/alerts';
   imports: [
     CommonModule,
     SharedModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, positionY: 'bottom'}),
+    AlertModule.forRoot({maxMessages: 5, timeout: 10000, positionY: 'bottom'}),
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
