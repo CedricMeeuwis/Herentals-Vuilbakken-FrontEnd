@@ -64,6 +64,15 @@ export class VuilbakkenComponent implements OnInit {
 
     return(base.includes(subs));
   }
+  convertGram(gram: number): string{
+    var check = Math.trunc(gram);
+    if(check.toString().length >= 4){
+      gram /= Math.pow(10, 3);
+      gram = Math.round(gram * 100) / 100
+      return gram.toString() + " kg";
+    }
+    return gram.toString() + " g";
+  }
   ngOnInit(): void {
     this._vuilbakService.getVuilbakken().subscribe(val =>{
       this.BouwVuilbakkenOp(val);
