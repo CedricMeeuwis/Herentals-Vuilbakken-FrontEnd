@@ -2,6 +2,7 @@
     integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
     crossorigin="anonymous" />
 
+<ff-alerts></ff-alerts>
 <div class="overzichtVuilbakken">
     <section id="general" class="bootstrapCard">
         <div class="container">
@@ -42,19 +43,15 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">
-                                    <label for="slider" class="form-label">Bereik voorspelling (dagen):
-                                        <b>{{maxWeekAantal}}</b></label><br />
-                                    <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxWeekAantal" name="slider"
-                                        class="form-range" id="slider">
+                                <div class="col-8">
+                                    <label for="slider" class="form-label">Bereik voorspelling (vorige dagen):
+                                        <b>{{maxDagAantal}}</b></label><br />
+                                    <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxDagAantal" name="slider"
+                                        class="form-range w-75" id="slider">
                                 </div>
-                                <div class="col-6 text-center">
-                                
-
-                                                <button (click)="toggleFire()" *ngIf="fireFilter == false" class="btn btn-danger brandKnop">Toon branden <i class="fas fa fa-fire-alt brandIcoon"></i></button>
-
-                                                <button (click)="toggleFire()" *ngIf="fireFilter == true" class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i class="fas fa-dumpster"></i></button>
-                    
+                                <div class="col-12 col-sm-4 text-right text-sm-center my-auto">
+                                    <button (click)="toggleFire()" *ngIf="fireFilter == false" class="btn btn-danger brandKnop">Brand noodknop <i class="fas fa fa-fire-alt brandIcoon"></i></button>
+                                    <button (click)="toggleFire()" *ngIf="fireFilter == true" class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i class="fas fa-dumpster"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +62,7 @@
                 <ng-container *ngFor="let vuilbak of vuilbakData; let i = index">
                     <ng-container
                         *ngIf="vuilbak.vuilbak.brand == false && assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
-                        <div *ngIf="vuilbak.vuilbak.straat.includes(straatFilter)
+                        <div *ngIf="filterSearch(vuilbak.vuilbak.straat, straatFilter)
                                     && perc >= volhMin
                                     && perc <= volhMax
                                     && (!fireFilter || fireFilter == vuilbak.vuilbak.brand)"
@@ -117,15 +114,14 @@
                                     <div>
                                         <iframe
                                             *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
-                                            class="iFrame shadow" [src]="frameUrls[i]" frameborder="0"
+                                            class="iFrame shadow mt-3" [src]="frameUrls[i]" frameborder="0"
                                             allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ng-container>
-                    <ng-container
-                    *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
+                    <ng-container *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
                     <div *ngIf="vuilbak.vuilbak.brand == true"
                         class="col-sm-12 col-md-12 col-lg-6">
                         <div class="card shadow mt-5 bootstrapCardBrand">
@@ -148,7 +144,7 @@
                                 <div>
                                     <iframe
                                         *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
-                                        class="iFrame shadow" [src]="frameUrls[i]" frameborder="0"
+                                        class="iFrame shadow mt-3" [src]="frameUrls[i]" frameborder="0"
                                         allowfullscreen></iframe>
                                 </div>
                             </div>

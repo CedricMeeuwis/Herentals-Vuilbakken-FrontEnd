@@ -23,7 +23,7 @@
           <nav *ngIf="!isMobile" class="nav-menu d-none d-lg-block">
             <ul>
               <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-              <li *ngIf="myRole != ''"><a href="https://visualisaties.netlify.app/">Schema's</a></li>
+              <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a href="https://visualisaties.netlify.app/">Schema's</a></li>
               <li *ngIf="myRole != ''"><a routerLink="/vuilbakken" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vuilbakken</a></li>
               <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
             </ul>
