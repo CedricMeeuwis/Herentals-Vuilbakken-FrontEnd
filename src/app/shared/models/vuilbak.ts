@@ -1,3 +1,7 @@
+import { NgZone } from "@angular/core";
+
+import { Zone } from './zone';
+
 export class Vuilbak {
     constructor(
         public volheid: number,
@@ -6,6 +10,8 @@ export class Vuilbak {
         public straat: string,
         public breedtegraad: number,
         public lengtegraad: number,
+        public zoneID: number,
+        public zone: Zone,
         public vuilbakID?: number,
     ){}
 }

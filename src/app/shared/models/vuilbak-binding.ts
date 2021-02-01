@@ -7,5 +7,6 @@ export class VuilbakBinding {
         public vuilbak: Vuilbak,
         public logging?: VuilbakLogging[],
         public prediction?: number,
+        public whenFull?: number,
     ){}
 }
