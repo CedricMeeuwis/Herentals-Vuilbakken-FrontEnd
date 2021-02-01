@@ -31,20 +31,22 @@
                 <th scope="col">Acties</th>
               </tr>
             </thead>
-            <tbody *ngFor="let user of mijnUsers">
-              <tr>
-                <td>{{user.username}}</td>
-                <td>{{user.role.naam}}</td>
-                <td>
-                  <a *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'" (click)="open(edit, user)" class="edit" data-toggle="modal">
-                    <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                  </a>
-                  <a *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'" (click)="open(delete, user)" class="delete" data-toggle="modal">
-                    <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
+            <ng-container *ngFor="let user of mijnUsers">
+              <tbody *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'">
+                <tr>
+                  <td>{{user.username}}</td>
+                  <td>{{user.role.naam}}</td>
+                  <td>
+                    <a *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'" (click)="open(edit, user)" class="edit" data-toggle="modal">
+                      <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                    </a>
+                    <a *ngIf="user.role.naam != 'Admin' || mijnRol == 'Admin'" (click)="open(delete, user)" class="delete" data-toggle="modal">
+                      <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </ng-container>
           </table>
         </div>
       </div>

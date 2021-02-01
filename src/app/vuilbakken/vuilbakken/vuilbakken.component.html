@@ -26,30 +26,76 @@
                                 <div class="col-12 col-md-4">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="title">Volheid tussen:</label>
+                                            <label for="title">Volheid (%):</label>
                                         </div>
-                                        <div class="col-4">
-                                            <input type="number" [(ngModel)]="volhMin" min="0" [max]="volhMax" step="5"
-                                                name="nr1" class="form-control" />
-                                        </div>
-                                        <div class="col-auto text-center">
-                                            <label for="title">en</label>
-                                        </div>
-                                        <div class="col-4">
-                                            <input type="number" [(ngModel)]="volhMax" [min]="volhMin" max="100"
-                                                step="5" name="nr2" class="form-control" />
+                                        <div class="col-12">
+                                            <ngx-slider [(value)]="volhMin" [(highValue)]="volhMax" [options]="options"></ngx-slider>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col-12 col-sm-6">
+                                    <label for="slider" class="form-label">Alle vuilbakken ophalen binnen:
+                                        <b *ngIf="aantalDagenOphalen > 0">{{aantalDagenOphalen}}</b> 
+                                        <span *ngIf="aantalDagenOphalen == -1">
+                                            <b>(Toon alles)</b>
+                                        </span>
+                                        <span *ngIf="aantalDagenOphalen == 0">
+                                            <b>0</b> dagen (direct!)
+                                        </span>
+                                        <span *ngIf="aantalDagenOphalen == 1">
+                                            dag
+                                        </span>
+                                        <span *ngIf="aantalDagenOphalen > 1">
+                                            dagen
+                                        </span>
+                                        <span *ngIf="aantalDagenOphalen > 0">
+                                            ({{getWhatDay(aantalDagenOphalen)}})
+                                        </span>
+                                    </label><br />
+                                    <input type="range" min="-1" max="14" [(ngModel)]="aantalDagenOphalen" name="slider"
+                                        class="form-range" id="slider">
+                                </div>
+                                <!--<div class="col-8">
                                     <label for="slider" class="form-label">Bereik voorspelling (vorige dagen):
                                         <b>{{maxDagAantal}}</b></label><br />
                                     <input type="range" min="1" max="14" (change)="BouwLoggingOp()" [(ngModel)]="maxDagAantal" name="slider"
                                         class="form-range w-75" id="slider">
+                                </div>-->
+                                <div class="col-12 col-sm-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p>
+                                                <mat-button-toggle-group name="zoneControle" aria-label="Zone controle">
+                                                  <mat-button-toggle (click)="toggleEditMode(false)" value="filter">Filter</mat-button-toggle>
+                                                  <mat-button-toggle (click)="toggleEditMode(true)" value="wijzigen">Wijzigen</mat-button-toggle>
+                                                </mat-button-toggle-group>
+                                              </p>
+                                        </div>
+                                        <div class="col-8">
+                                            <select name="zone" class="form-control" id="zone" aria-label="Zone" *ngIf="alleZones == null">
+                                                <option>Laden...</option>
+                                            </select>
+                                            <select *ngIf="alleZones != null" [(ngModel)]="selectedZone" name="zone" class="form-control" id="zone" aria-label="Zone">
+                                                <option value="0" selected>Alle zones</option>
+                                                <ng-container *ngFor="let zone of alleZones">
+                                                    <option [ngValue]="zone.zoneID">
+                                                        {{zone.naam}}
+                                                    </option>
+                                                </ng-container>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <div *ngIf="editMode">
+                                                <i (click)="openAdd(zoneW)" class="fas fa-plus"></i>
+                                                <i (click)="openChange(zoneW)" class="fas fa-pen"></i>
+                                                <i (click)="openDelete(zoneD)" class="fas fa-trash"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-12 col-sm-4 text-right text-sm-center my-auto">
+                                <div class="col-12 text-right my-auto">
                                     <button (click)="toggleFire()" *ngIf="fireFilter == false" class="btn btn-danger brandKnop">Brand noodknop <i class="fas fa fa-fire-alt brandIcoon"></i></button>
                                     <button (click)="toggleFire()" *ngIf="fireFilter == true" class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i class="fas fa-dumpster"></i></button>
                                 </div>
@@ -58,20 +104,34 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <mat-spinner *ngIf="vuilbakData == null"></mat-spinner>
+            <div class="row" *ngIf="vuilbakData != null">
                 <ng-container *ngFor="let vuilbak of vuilbakData; let i = index">
-                    <ng-container
-                        *ngIf="vuilbak.vuilbak.brand == false && assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
+                    <ng-container *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
                         <div *ngIf="filterSearch(vuilbak.vuilbak.straat, straatFilter)
                                     && perc >= volhMin
                                     && perc <= volhMax
-                                    && (!fireFilter || fireFilter == vuilbak.vuilbak.brand)"
+                                    && (!fireFilter || vuilbak.vuilbak.brand)
+                                    && (aantalDagenOphalen == -1 || aantalDagenOphalen == vuilbak.whenFull)
+                                    && ((editMode && (vuilbak.vuilbak.zoneID == null || vuilbak.vuilbak.zoneID == selectedZone)) || selectedZone == 0 || selectedZone == vuilbak.vuilbak.zoneID)"
                             class="col-sm-12 col-md-12 col-lg-6">
-                            <div class="card shadow mt-5">
+                            <div *ngIf="!vuilbak.vuilbak.brand" class="card shadow mt-5">
                                 <div class="card-header">
-                                    <p>
-                                        <i class="ri-map-pin-line"></i><span> {{vuilbak.vuilbak.straat}}</span>
-                                    </p>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                <i class="ri-map-pin-line"></i><span>{{vuilbak.vuilbak.straat}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <i (click)="addZoneToVuilbak(vuilbak.vuilbak)" class="ri-add-box-line ri-2x" *ngIf="editMode && vuilbak.vuilbak.zoneID == null"></i>
+                                            <i (click)="removeZoneFromVuilbak(vuilbak.vuilbak)" class="ri-checkbox-indeterminate-line ri-2x" *ngIf="editMode && vuilbak.vuilbak.zoneID != null"></i>
+                                            <p *ngIf="vuilbak.vuilbak.zone != null">
+                                                <span>{{vuilbak.vuilbak.zone.naam}}</span>
+                                                <i class="ri-global-line"></i>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -80,13 +140,26 @@
                                             <h3 class="align-items-center d-flex justify-content-center shadow">Huidig gewicht:
                                                 {{convertGram(vuilbak.vuilbak.gewicht)}}</h3>
                                         </div>
-                                        <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                        <div class="col-lg-3 col-md-4 col-sm-2">
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <p *ngIf="vuilbak.whenFull > 0">
+                                                Vuilbak ophalen binnen <b>{{vuilbak.whenFull}}</b> 
+                                                <span *ngIf="vuilbak.whenFull > 1">
+                                                    dagen
+                                                </span>
+                                                <span *ngIf="vuilbak.whenFull == 1">
+                                                    dag
+                                                </span>
+                                            </p>
+                                            <p *ngIf="vuilbak.whenFull == 0">Vuilbak direct ophalen!</p>
+                                            <p *ngIf="vuilbak.whenFull == null">Niet genoeg data voor voorspelling</p>
+                                        </div>
                                     </div>
                                     <div class="card-text align-items-center d-flex justify-content-center">
                                         <div class="row">
-                                            <div class="col-md-6 col-sm-12">
-                                                <h2 class="align-items-center d-flex justify-content-center">Huidige
-                                                    waarde</h2>
+                                            <div class="col-md-12 col-sm-12">
+                                                <h2 class="align-items-center d-flex justify-content-center">Vuilbak % vol:</h2>
                                                 <circle-progress
                                                     class="align-items-center d-flex justify-content-center shadow"
                                                     [percent]="perc" [radius]="100" [subtitle]="getText(perc)" [backgroundPadding]="0" [radius]="85"
@@ -96,7 +169,7 @@
                                                     [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square">
                                                 </circle-progress>
                                             </div>
-                                            <div class="col-md-6 col-sm-12">
+                                            <!--<div class="col-md-6 col-sm-12">
                                                 <h2 class="align-items-center d-flex justify-content-center">
                                                     Voorspelling</h2>
                                                 <circle-progress
@@ -108,7 +181,7 @@
                                                     [innerStrokeColor]="'#1B3C65'" [animation]="true"
                                                     [animationDuration]="300" [toFixed]="2" outerStrokeLinecap="square">
                                                 </circle-progress>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                     <div>
@@ -119,40 +192,86 @@
                                     </div>
                                 </div>
                             </div>
+                            <div *ngIf="vuilbak.vuilbak.brand" class="card shadow mt-5 bootstrapCardBrand">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                <i class="ri-map-pin-line"></i><span>{{vuilbak.vuilbak.straat}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <p *ngIf="vuilbak.vuilbak.zoneID != null">
+                                                <span>{{vuilbak.vuilbak.zone.naam}}</span><i class="ri-map-pin-line"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                        <div class="col-lg-6 col-md-5 col-sm-8">
+                                            <h3 class="align-items-center d-flex justify-content-center shadow">Brand!</h3>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-2"></div>
+                                    </div>
+                                        <div class="fireDumpster align-items-center d-flex justify-content-center">
+                                            <i class="fas fa-dumpster-fire fa-10x"></i>
+                                        </div>
+                                    <div>
+                                        <iframe
+                                            *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
+                                            class="iFrame shadow mt-3" [src]="frameUrls[i]" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </ng-container>
-                    <ng-container *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
-                    <div *ngIf="vuilbak.vuilbak.brand == true"
-                        class="col-sm-12 col-md-12 col-lg-6">
-                        <div class="card shadow mt-5 bootstrapCardBrand">
-                            <div class="card-header">
-                                <p>
-                                    <i class="ri-map-pin-line"></i><span> {{vuilbak.vuilbak.straat}}</span>
-                                </p>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 col-sm-2"></div>
-                                    <div class="col-lg-6 col-md-5 col-sm-8">
-                                        <h3 class="align-items-center d-flex justify-content-center shadow">Brand!</h3>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-2"></div>
-                                </div>
-                                    <div class="fireDumpster align-items-center d-flex justify-content-center">
-                                        <i class="fas fa-dumpster-fire fa-10x"></i>
-                                    </div>
-                                <div>
-                                    <iframe
-                                        *ngIf="vuilbak.vuilbak.breedtegraad != null && vuilbak.vuilbak.lengtegraad != null"
-                                        class="iFrame shadow mt-3" [src]="frameUrls[i]" frameborder="0"
-                                        allowfullscreen></iframe>
-                                </div>
-                            </div>
+                </ng-container>
+            </div>
+            <!--Modal voor zone edit & add-->
+            <ng-template #zoneW let-modal>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-basic-title">Zone</h2>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="h6">Naam van zone:</label>
+                            <input type="text" [(ngModel)]="zoneNaamInput" name="zone" class="form-control"/>
                         </div>
-                    </div>
-                </ng-container>
-                </ng-container>
-            </div>            
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button *ngIf="!addOrChange" type="button" class="btn btn-outline-success" (click)="addZone()">Opslaan</button>
+                    <button *ngIf="addOrChange" type="button" class="btn btn-outline-success" (click)="changeZone()">Verander</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Annuleer</button>
+                </div>
+            </ng-template>
+            <!--Modal voor zone delete-->
+            <ng-template #zoneD let-modal>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-basic-title">Zone</h2>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="h6">Verwijder zone <b>{{zoneNaamInput}}</b>?</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" (click)="deleteZone()">Verwijder</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Annuleer</button>
+                </div>
+            </ng-template>   
         </div>
     </section>
 </div>

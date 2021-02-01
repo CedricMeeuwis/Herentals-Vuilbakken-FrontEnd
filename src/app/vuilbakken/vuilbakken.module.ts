@@ -4,6 +4,8 @@ import { VuilbakkenComponent } from './vuilbakken/vuilbakken.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AlertModule } from '@full-fledged/alerts';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -11,6 +13,7 @@ import { AlertModule } from '@full-fledged/alerts';
   imports: [
     CommonModule,
     SharedModule,
+    MatButtonToggleModule,
     AlertModule.forRoot({maxMessages: 5, timeout: 10000, positionY: 'bottom'}),
     NgCircleProgressModule.forRoot({
       // set defaults here
@@ -20,7 +23,8 @@ import { AlertModule } from '@full-fledged/alerts';
       outerStrokeColor: "#78C000",
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
-    })
+    }),
+    NgxSliderModule,
   ]
 })
 export class VuilbakkenModule { }
