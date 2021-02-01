@@ -15,7 +15,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h4>Gebruikers</h4>
+                                <h4>Vuilbakken</h4>
                             </div>
                             <div class="col-sm-6">
                                 <button class="modal-title" (click)="navigateNieuw()" class="btn btn-success"
@@ -31,6 +31,7 @@
                                 <th scope="col">Coöridnaten</th>
                                 <th scope="col">Zone</th>
                                 <th scope="col">Max volume</th>
+                                <th scope="col">Acties</th>
                             </tr>
                         </thead>
                         <ng-container>
@@ -73,8 +74,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label>U bent op het punt om <b>{{selectedVuilbak.straat}}</b> te verwijderen!</label>
-                            <p>Gelieve om zijn gebruikersnaam in te geven voor bevestiging dat u deze gebruiker wilt
+                            <label>U bent op het punt om een vuilbak in de <b>{{selectedVuilbak.straat}}</b> te verwijderen!</label>
+                            <p>Gelieve om de straatnaam in te geven voor bevestiging dat u deze vuilbak wilt
                                 verwijderen</p>
                             <div class="input-group">
                                 <input *ngIf="selectedVuilbak != null" [(ngModel)]="confirmDelete" class="form-control"

@@ -14,6 +14,7 @@ import { AuthManagersGuard } from './login/guards/auth-managers.guard';
 import { AuthUserGuard } from './login/guards/auth-user.guard';
 
 import {VuilbakkenManageComponent} from './vuilbakken-manage/vuilbakken-manage/vuilbakken-manage.component';
+import {ZonesManageComponent} from './zones-manage/zones-manage/zones-manage.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [AuthUserGuard] },
   { path: 'wachtVerandering', component: WachtVeranderComponent, canActivate: [AuthUserGuard] },
   { path: 'vuilbakken', component: VuilbakkenComponent, canActivate: [AuthUserGuard] },
-  { path: 'vuilbakken-manage', component: VuilbakkenManageComponent},
+  { path: 'vuilbakken-manage', component: VuilbakkenManageComponent,  canActivate: [AuthUserGuard] },
+  { path: 'zones-manage', component: ZonesManageComponent,  canActivate: [AuthUserGuard] },
   { path: 'gebruikers', component: UserManageComponent, canActivate: [AuthManagersGuard] },
   { path: 'nieuwe-gebruiker', component: NewUserComponent, canActivate: [AuthManagersGuard] },
 ];

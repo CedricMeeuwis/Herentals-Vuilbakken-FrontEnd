@@ -18,6 +18,7 @@ import { NewUserModule } from './new-user/new-user.module';
 import { FooterComponent } from './footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import {VuilbakkenManageModule} from './vuilbakken-manage/vuilbakken-manage.module';
+import {ZonesManageModule} from './zones-manage/zones-manage.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {VuilbakkenManageModule} from './vuilbakken-manage/vuilbakken-manage.modu
     VuilbakkenModule,
     VuilbakkenManageModule,
     UserManageModule,
+    ZonesManageModule,
     AppRoutingModule,
     NewUserModule,
     NgbModule,
