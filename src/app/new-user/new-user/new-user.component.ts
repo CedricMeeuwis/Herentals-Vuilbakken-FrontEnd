@@ -12,7 +12,7 @@ import decode from 'jwt-decode';
 })
 export class NewUserComponent implements OnInit {
   allRoles: Role[];
-  newUser: User = new User('','', 1);
+  newUser: User = new User('','', 1 );
 
   mijnRol = "";
   constructor(private _userService: UserService, private router: Router) { }

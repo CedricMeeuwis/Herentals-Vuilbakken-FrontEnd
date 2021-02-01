@@ -11,7 +11,7 @@ export class Vuilbak {
         public breedtegraad: number,
         public lengtegraad: number,
         public zoneID: number,
-        public zone: Zone,
+        public zone?: Zone,
         public vuilbakID?: number,
     ){}
 }

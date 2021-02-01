@@ -77,7 +77,7 @@ export class VuilbakkenManageComponent implements OnInit {
     this.modalService.dismissAll();
   }
   navigateNieuw(){
-    this.router.navigate(['/nieuwe-gebruiker']);
+    this.router.navigate(['/nieuwe-vuilbak']);
   }
 
   ngOnInit(): void {
