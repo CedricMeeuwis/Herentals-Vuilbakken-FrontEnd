@@ -16,18 +16,21 @@
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-4">
                                     <h1>
                                         Filteren
                                     </h1>
                                 </div>
-                                <div class="col-md-6 col-sm-12 text-right my-auto">
-                                    <button (click)="toggleFire()" *ngIf="fireFilter == false"
-                                    class="btn btn-danger brandKnop">Brand noodknop <i
-                                        class="fas fa fa-fire-alt brandIcoon"></i></button>
-                                <button (click)="toggleFire()" *ngIf="fireFilter == true"
-                                    class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i
-                                        class="fas fa-dumpster"></i></button>
+                                <div class="col-8 text-right my-auto">
+                                    
+                              
+                                            <button (click)="toggleFire()" *ngIf="fireFilter == false"
+                                                class="btn btn-danger brandKnop">Brand noodknop <i
+                                                    class="fas fa fa-fire-alt brandIcoon"></i></button>
+                                            <button (click)="toggleFire()" *ngIf="fireFilter == true"
+                                                class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i
+                                                    class="fas fa-dumpster"></i></button>
+
                                 </div>
                             </div>
 
@@ -35,11 +38,19 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="title">Straat:</label>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label for="title">Straat:</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-12">
-                                            <input type="text" [(ngModel)]="straatFilter" name="straat"
-                                            class="form-control" />
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input type="text" [(ngModel)]="straatFilter" name="straat"
+                                                    class="form-control" />
+                                                    </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,27 +58,59 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="title">Zone:</label>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <label for="title">Zone:</label>
+                                                </div>
+                                                <div class="col-6 text-right my-auto">
+                                                    <div *ngIf="editMode">
+                                                        <div class="row">
+                                                            <div class="col-3 col-md-6">
+                                                                
+                                                            </div>
+                                                            <div class="col-3 col-md-2 text-right my-auto">
+                                                                <i (click)="openAdd(zoneW)" class="fas fa-plus"></i>
+                                                            </div>
+                                                            <div class="col-3 col-md-2 text-right my-auto">
+                                                                <i (click)="openChange(zoneW)" class="fas fa-pen"></i>
+                                                            </div>
+                                                            <div class="col-3 col-md-2 text-right my-auto">
+                                                                <i (click)="openDelete(zoneD)" class="fas fa-trash"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            </div>
                                         </div>
                                         <div class="col-12">
-                                            <select name="zone" class="form-control" id="zone" aria-label="Zone"
-                                            *ngIf="alleZones == null">
-                                            <option>Laden...</option>
-                                        </select>
-                                        <select *ngIf="alleZones != null" [(ngModel)]="selectedZone" name="zone"
-                                            class="form-control" id="zone" aria-label="Zone">
-                                            <option value="0" selected>Alle zones</option>
-                                            <ng-container *ngFor="let zone of alleZones">
-                                                <option [ngValue]="zone.zoneID">
-                                                    {{zone.naam}}
-                                                </option>
-                                            </ng-container>
-                                        </select>
+                                        <div class="row">
+                                            <div class="col-8 col-md-9">
+                                                    <select name="zone" class="form-control" id="zone" aria-label="Zone"
+                                                        *ngIf="alleZones == null">
+                                                        <option>Laden...</option>
+                                                    </select>
+                                                    <select *ngIf="alleZones != null" [(ngModel)]="selectedZone"
+                                                        name="zone" class="form-control" id="zone" aria-label="Zone">
+                                                        <option value="0" selected>Alle zones</option>
+                                                        <ng-container *ngFor="let zone of alleZones">
+                                                            <option [ngValue]="zone.zoneID">
+                                                                {{zone.naam}}
+                                                            </option>
+                                                        </ng-container>
+                                                    </select>
+                                            </div>
+                                            <div class="col-4 col-md-3 text-right my-auto">
+                                                <button (click)="toggleEditMode(true)" value="wijzigen"
+                                                *ngIf="editMode == false"
+                                                class="btn btn-danger vuilbakKnop">Bewerk</button>
+                                            <button (click)="toggleEditMode(false)" value="filter" *ngIf="editMode"
+                                                class="btn btn-danger vuilbakKnop">Klaar</button>
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
@@ -93,8 +136,9 @@
                                             </label><br />
                                         </div>
                                         <div class="col-12">
-                                            <input type="range" min="-1" max="14" [(ngModel)]="aantalDagenOphalen" name="slider"
-                                        class="form-range" id="slider" style="margin-top: 30px !important;">
+                                            <input type="range" min="-1" max="14" [(ngModel)]="aantalDagenOphalen"
+                                                name="slider" class="form-range" id="slider"
+                                                style="margin-top: 30px !important;">
                                         </div>
                                     </div>
                                 </div>
@@ -105,8 +149,9 @@
                                             <label for="title">Volheid (%):</label>
                                         </div>
                                         <div class="col-12 volheidSlider">
-                                         
-                                            <ngx-slider [(value)]="volhMin" [(highValue)]="volhMax" [options]="options"></ngx-slider>
+
+                                            <ngx-slider [(value)]="volhMin" [(highValue)]="volhMax" [options]="options">
+                                            </ngx-slider>
                                         </div>
                                     </div>
                                 </div>
@@ -130,10 +175,27 @@
                             <div *ngIf="!vuilbak.vuilbak.brand" class="card shadow mt-5">
                                 <div class="card-header">
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-6 text-left">
                                             <p>
-                                                <i class="ri-map-pin-line"></i><span>{{vuilbak.vuilbak.straat}}</span>
+                                                <i class="ri-map-pin-line"></i><span> {{vuilbak.vuilbak.straat}}</span>
+                                                <span *ngIf="vuilbak.vuilbak.zone != null">
+                                                    <span><b> - Zone: </b>{{vuilbak.vuilbak.zone.naam}}</span>
+                                                </span>
                                             </p>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                </div>
+                                                <div class="col-6" style="margin-top: -18px !important;">
+                                                    <i (click)="addZoneToVuilbak(vuilbak.vuilbak)"
+                                                        class="ri-add-box-line ri-2x"
+                                                        *ngIf="editMode && vuilbak.vuilbak.zoneID == null"></i>
+                                                    <i (click)="removeZoneFromVuilbak(vuilbak.vuilbak)"
+                                                        class="ri-checkbox-indeterminate-line ri-2x"
+                                                        *ngIf="editMode && vuilbak.vuilbak.zoneID != null"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

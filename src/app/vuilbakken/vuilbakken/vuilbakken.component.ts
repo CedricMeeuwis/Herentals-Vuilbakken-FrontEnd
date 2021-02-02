@@ -59,6 +59,7 @@ export class VuilbakkenComponent implements OnInit {
   selectedZone = 0;
   zoneNaamInput = "";
   addOrChange = false;
+  done = false;
 
   constructor(private _vuilbakService: VuilbakService, private _zoneService: ZoneService, private sanitizer: DomSanitizer, private alertService: AlertService, private modalService: NgbModal) { 
     this.frameUrls = [];
@@ -79,6 +80,12 @@ export class VuilbakkenComponent implements OnInit {
   //Zone functionaliteit
   toggleEditMode(value: boolean){
     this.editMode = value;
+    console.log(value);
+    if(value == true){
+      this.done == true;
+    } else {
+      this.done == false;
+    }
   }
   openAdd(content){
     this.zoneNaamInput = "";
