@@ -17,12 +17,21 @@ import { UserManageModule } from './user-manage/user-manage.module';
 import { NewUserModule } from './new-user/new-user.module';
 import { FooterComponent } from './footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { SurveyComponent } from './survey/survey.component';
+import { SurveyCreatorComponent } from './survey/survey.creator.component';
+import { EnqueteEditComponent } from './enquete-edit/enquete-edit.component';
+import { EnquetesModule } from './enquetes/enquetes.module';
+import { EnqueteComponent } from './enquete/enquete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    SurveyComponent,
+    SurveyCreatorComponent,
+    EnqueteEditComponent,
+    EnqueteComponent
   ],
   imports: [
     NgCircleProgressModule.forRoot({
@@ -45,7 +54,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     AppRoutingModule,
     NewUserModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    EnquetesModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
