@@ -37,6 +37,7 @@ export class SurveyComponent implements OnInit {
   @Input()
   json: object;
   result: any;
+  @Input() writeFunction: (args: any) => void;
 
   ngOnInit() {
     const surveyModel = new Survey.Model(this.json);
@@ -59,6 +60,7 @@ export class SurveyComponent implements OnInit {
       header.appendChild(btn);
     });
     surveyModel.onComplete.add((result, options) => {
+      this.writeFunction(result.data);
       this.submitSurvey.emit(result.data);
       this.result = result.data;
     });
