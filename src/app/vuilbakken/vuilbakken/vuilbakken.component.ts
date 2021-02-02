@@ -33,7 +33,7 @@ export class VuilbakkenComponent implements OnInit {
   };
   fireFilter = false;
   erIsBrand = false;
-  aantalDagenOphalen = 0;
+  aantalDagenOphalen = -1;
 
   //Google map urls
   frameUrls: SafeResourceUrl[];
@@ -170,9 +170,9 @@ export class VuilbakkenComponent implements OnInit {
     if(check.toString().length >= 4){
       gram /= Math.pow(10, 3);
       gram = Math.round(gram * 100) / 100
-      return gram.toString() + " kg";
+      return gram.toString() + "kg";
     }
-    return gram.toString() + " g";
+    return gram.toString() + "g";
   }
   //Ophaal en bouwen van vuilbak data
   BouwVuilbakkenOp(data){
@@ -227,7 +227,6 @@ export class VuilbakkenComponent implements OnInit {
       }
       this.vuilbakData[i].whenFull = amount;
     }
-    console.log(this.vuilbakData);
   }
   //Bouw google maps
   buildUrl(bg, lg){

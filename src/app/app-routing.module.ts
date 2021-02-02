@@ -7,12 +7,14 @@ import { WachtVeranderComponent } from './wacht-verander/wacht-verander/wacht-ve
 import { VuilbakkenComponent } from './vuilbakken/vuilbakken/vuilbakken.component';
 import { UserManageComponent } from './user-manage/user-manage/user-manage.component';
 import { NewUserComponent } from './new-user/new-user/new-user.component';
+import { EnquetesComponent } from './enquetes/enquetes/enquetes.component';
+import { EnqueteEditComponent } from './enquete-edit/enquete-edit.component';
+import { EnqueteComponent } from './enquete/enquete.component';
 
 import { AuthAdminGuard } from './login/guards/auth-admin.guard';
 import { AuthOphalerGuard } from './login/guards/auth-ophaler.guard';
 import { AuthManagersGuard } from './login/guards/auth-managers.guard';
 import { AuthUserGuard } from './login/guards/auth-user.guard';
-
 import {VuilbakkenManageComponent} from './vuilbakken-manage/vuilbakken-manage/vuilbakken-manage.component';
 import {ZonesManageComponent} from './zones-manage/zones-manage/zones-manage.component';
 import {NewVuilbakComponent} from './new-vuilbak/new-vuilbak/new-vuilbak.component';
@@ -28,6 +30,9 @@ const routes: Routes = [
   { path: 'zones-manage', component: ZonesManageComponent,  canActivate: [AuthUserGuard] },
   { path: 'gebruikers', component: UserManageComponent, canActivate: [AuthManagersGuard] },
   { path: 'nieuwe-gebruiker', component: NewUserComponent, canActivate: [AuthManagersGuard] },
+  { path: 'enquetes', component: EnquetesComponent, canActivate: [AuthAdminGuard] },
+  { path: 'enquete-nieuw', component: EnqueteEditComponent, canActivate: [AuthAdminGuard] },
+  { path: 'enquete', component: EnqueteComponent},
   { path: 'nieuwe-vuilbak', component: NewVuilbakComponent, canActivate: [AuthManagersGuard] },
   { path: 'nieuwe-zone', component: NewZoneComponent, canActivate: [AuthManagersGuard] },
 ];
