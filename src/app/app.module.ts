@@ -16,17 +16,34 @@ import { VuilbakkenModule } from './vuilbakken/vuilbakken.module';
 import { UserManageModule } from './user-manage/user-manage.module';
 import { FooterComponent } from './footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import {VuilbakkenManageModule} from './vuilbakken-manage/vuilbakken-manage.module';
-import {ZonesManageModule} from './zones-manage/zones-manage.module';
-import {NewUserModule} from './new-user/new-user.module';
-import {NewVuilbakModule} from './new-vuilbak/new-vuilbak.module';
-import {NewZoneModule} from './new-zone/new-zone.module';
+import { SurveyComponent } from './survey/survey.component';
+import { SurveyCreatorComponent } from './survey/survey.creator.component';
+import { EnqueteEditComponent } from './enquete-edit/enquete-edit.component';
+import { EnquetesModule } from './enquetes/enquetes.module';
+import { EnqueteComponent } from './enquete/enquete.component';
+import { VuilbakkenManageModule} from './vuilbakken-manage/vuilbakken-manage.module';
+import { ZonesManageModule} from './zones-manage/zones-manage.module';
+import { NewUserModule} from './new-user/new-user.module';
+import { NewVuilbakModule} from './new-vuilbak/new-vuilbak.module';
+import { NewZoneModule } from './new-zone/new-zone.module';
+import { EnqueteAntwoordenComponent } from './enquete-antwoorden/enquete-antwoorden.component';
+import { SurveyAnalyticsComponent } from './survey/survey.analytics.component';
+import { SurveyAnalyticsDatatablesComponent } from './survey/survey.analytics.datatables';
+import { SurveyAnalyticsTabulatorComponent } from './survey/survey.analytics.tabulator';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    SurveyComponent,
+    SurveyCreatorComponent,
+    SurveyAnalyticsComponent,
+    SurveyAnalyticsDatatablesComponent,
+    SurveyAnalyticsTabulatorComponent,
+    EnqueteEditComponent,
+    EnqueteComponent,
+    EnqueteAntwoordenComponent
   ],
   imports: [
     NgCircleProgressModule.forRoot({
@@ -53,7 +70,8 @@ import {NewZoneModule} from './new-zone/new-zone.module';
     NewVuilbakModule,
     NewZoneModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    EnquetesModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

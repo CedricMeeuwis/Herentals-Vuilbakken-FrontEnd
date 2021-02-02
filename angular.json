@@ -29,6 +29,9 @@
               "src/_redirects",
               "src/mani"
             ],
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/scss/styles.scss",
@@ -36,7 +39,31 @@
               "src/assets/vendor/boxicons/css/boxicons.min.css",
               "src/assets/vendor/icofont/icofont.min.css",
               "src/assets/vendor/remixicon/remixicon.css",
-              "src/assets/vendor/owl.carousel/assets/owl.carousel.min.css"
+              "src/assets/vendor/owl.carousel/assets/owl.carousel.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/survey-angular/survey.css",
+              "node_modules/survey-creator/survey-creator.css",
+              "node_modules/jquery-ui/themes/base/theme.css",
+              "node_modules/jquery-ui/themes/base/datepicker.css",
+              "node_modules/nouislider/distribute/nouislider.css",
+              "node_modules/select2/dist/css/select2.css",
+              "node_modules/pretty-checkbox/dist/pretty-checkbox.css",
+              "node_modules/bootstrap-slider/dist/css/bootstrap-slider.css",
+              "node_modules/jquery-bar-rating/dist/themes/bars-pill.css",
+              "node_modules/jquery-bar-rating/dist/themes/css-stars.css",
+              "node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css",
+              "node_modules/jquery-bar-rating/dist/themes/bars-1to10.css",
+              "node_modules/jquery-bar-rating/dist/themes/bars-horizontal.css",
+              "node_modules/jquery-bar-rating/dist/themes/bars-movie.css",
+              "node_modules/jquery-bar-rating/dist/themes/bars-reversed.css",
+              "node_modules/jquery-bar-rating/dist/themes/bars-square.css",
+              "node_modules/jquery-bar-rating/dist/themes/bootstrap-stars.css",
+              "node_modules/jquery-bar-rating/dist/themes/fontawesome-stars-o.css",
+              "node_modules/survey-analytics/survey.analytics.css",
+              "node_modules/survey-analytics/survey.analytics.tabulator.css",
+              "node_modules/survey-analytics/survey.analytics.datatables.css",
+              "node_modules/datatables.net-colreorder-dt/css/colReorder.dataTables.css",
+              "node_modules/tabulator-tables/dist/css/tabulator.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -46,7 +73,19 @@
               "src/assets/vendor/counterup/counterup.min.js",
               "src/assets/vendor/venobox/venobox.min.js",
               "src/assets/vendor/owl.carousel/owl.carousel.min.js",
-              "src/assets/vendor/isotope-layout/isotope.pkgd.min.js"
+              "src/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery-ui/ui/widgets/datepicker.js",
+              "node_modules/select2/dist/js/select2.js",
+              "node_modules/jquery-bar-rating/dist/jquery.barrating.min.js",
+              "node_modules/emotion-ratings/dist/emotion-ratings.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/datatables.net-dt/js/dataTables.dataTables.js",
+              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
+              "node_modules/datatables.net-buttons/js/buttons.print.js",
+              "node_modules/datatables.net-buttons/js/buttons.html5.js",
+              "node_modules/datatables.net-colreorder/js/dataTables.colReorder.js",
+              "node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js"
             ]
           },
           "configurations": {
