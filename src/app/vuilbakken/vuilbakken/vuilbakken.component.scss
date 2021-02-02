@@ -1,0 +1,23 @@
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+    .volheidSlider .ngx-slider .ngx-slider-pointer {
+        width: 15px;
+        height: 28px;
+        bottom: 0;
+        background-color: #263d4d;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+    
+      .volheidSlider .ngx-slider .ngx-slider-pointer:after {
+        display: none;
+      }
+    
+      .volheidSlider .ngx-slider .ngx-slider-bubble {
+        bottom: 14px;
+      }
+    
+      .volheidSlider .ngx-slider .ngx-slider-selection {
+        height: 12.8px !important;
+      }
+  }

@@ -29,11 +29,26 @@ export class VuilbakkenComponent implements OnInit {
   volhMax = 100;
   options: Options = {
     floor: 0,
-    ceil: 100
+    ceil: 100,
+    getSelectionBarColor: (value: number): string => {
+      if (this.volhMin == 0 && this.volhMax > 99){
+        return '#5c8eb0';
+      }
+      if (this.volhMin <= 55 && this.volhMax <=55) {
+          return '#42BD50';
+      }
+      if (this.volhMin >55  && this.volhMax <=75 || this.volhMin <=75 && this.volhMax <=75) {
+          return '#FFC107';
+      }
+      if (this.volhMin >75 || this.volhMax >75) {
+          return '#F44336';
+      }
+      return '#2AE02A';
+    }
   };
   fireFilter = false;
   erIsBrand = false;
-  aantalDagenOphalen = 0;
+  aantalDagenOphalen = -1;
 
   //Google map urls
   frameUrls: SafeResourceUrl[];
@@ -233,4 +248,5 @@ export class VuilbakkenComponent implements OnInit {
   buildUrl(bg, lg){
     this.frameUrls.push(this.sanitizer.bypassSecurityTrustResourceUrl("https://maps.google.com/maps?q=" + bg + ", " + lg + "&z=15&output=embed"));
   }
+
 }
