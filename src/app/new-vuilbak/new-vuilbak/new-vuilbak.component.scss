@@ -1,0 +1,29 @@
+@import '../../../scss/variables';
+
+.addVuilbak .addVuilbakButtons{
+    margin-top: 25px !important;
+}
+
+.addVuilbak .addVuilbakButtons .addButton{
+    background-color: $review !important;
+  }
+
+ .addVuilbak .addVuilbakButtons .addButton:hover{
+    background-color: $reviewHover !important;
+  }
+
+.addVuilbak .addVuilbakButtons .cancelButton{
+    background-color: $deleteColor !important;
+  }
+
+.addVuilbak .addVuilbakButtons .cancelButton:hover{
+    background-color: $deleteHover !important;
+  }
+
+.form-control{
+    width: 13rem !important;
+}
+
+.card-body{
+    margin-top: -30px !important;
+}

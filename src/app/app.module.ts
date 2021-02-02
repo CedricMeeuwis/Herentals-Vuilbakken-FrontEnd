@@ -14,7 +14,6 @@ import { AccountModule } from './account/account.module';
 import { WachtVeranderModule } from './wacht-verander/wacht-verander.module';
 import { VuilbakkenModule } from './vuilbakken/vuilbakken.module';
 import { UserManageModule } from './user-manage/user-manage.module';
-import { NewUserModule } from './new-user/new-user.module';
 import { FooterComponent } from './footer/footer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SurveyComponent } from './survey/survey.component';
@@ -22,6 +21,11 @@ import { SurveyCreatorComponent } from './survey/survey.creator.component';
 import { EnqueteEditComponent } from './enquete-edit/enquete-edit.component';
 import { EnquetesModule } from './enquetes/enquetes.module';
 import { EnqueteComponent } from './enquete/enquete.component';
+import {VuilbakkenManageModule} from './vuilbakken-manage/vuilbakken-manage.module';
+import {ZonesManageModule} from './zones-manage/zones-manage.module';
+import {NewUserModule} from './new-user/new-user.module';
+import {NewVuilbakModule} from './new-vuilbak/new-vuilbak.module';
+import {NewZoneModule} from './new-zone/new-zone.module';
 
 @NgModule({
   declarations: [
@@ -50,9 +54,13 @@ import { EnqueteComponent } from './enquete/enquete.component';
     AccountModule,
     WachtVeranderModule,
     VuilbakkenModule,
+    VuilbakkenManageModule,
     UserManageModule,
+    ZonesManageModule,
     AppRoutingModule,
     NewUserModule,
+    NewVuilbakModule,
+    NewZoneModule,
     NgbModule,
     BrowserAnimationsModule,
     EnquetesModule,

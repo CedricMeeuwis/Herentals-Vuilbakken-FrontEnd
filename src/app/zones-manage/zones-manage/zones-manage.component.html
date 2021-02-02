@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+<div class="zones">
+    <section id="general" class="bootstrapCard">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Zones</h2>
+                <p>Overzicht zones</p>
+            </div>
+            <mat-spinner *ngIf="zones == null"></mat-spinner>
+            <div *ngIf="zones != null" class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Zones</h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="modal-title" (click)="navigateNieuw()" class="btn btn-success"
+                                    data-toggle="modal"><i
+                                        class="material-icons">&#xE147;</i><span>Toevoegen</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nummer</th>
+                                <th scope="col">Naam</th>
+                                <th scope="col">Acties</th>
+                            </tr>
+                        </thead>
+                        <ng-container>
+                            <tbody>
+                                <tr *ngFor="let zone of zones">
+                                    <td>{{zone.zoneID}}</td>
+                                    <td>{{zone.naam}}</td>
+                                    <td>
+                                        <a (click)="open(edit, zone)" class="edit" data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                        </a>
+                                        <a (click)="open(delete, zone)" class="delete" data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </ng-container>
+                    </table>
+                </div>
+            </div>
+
+            <!--Modal voor delete-->
+            <ng-template #delete let-modal>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-basic-title">Delete bevestiging</h2>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>U bent op het punt om zone <b>{{selectedZone.naam}}</b> te verwijderen!</label>
+                            <p>Gelieve om de zone in te geven voor bevestiging dat u deze zone wilt
+                                verwijderen</p>
+                            <div class="input-group">
+                                <input *ngIf="selectedZone != null" [(ngModel)]="confirmDelete" class="form-control"
+                                    placeholder="{{selectedZone.naam}}" name="confirmName">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteZone()"
+                        [disabled]="confirmDelete != selectedZone.naam">Verwijder</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="close()">Annuleren</button>
+                </div>
+            </ng-template>
+
+            <!--Modal voor edit-->
+            <ng-template #edit let-modal>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-basic-title">Bewerk zone</h2>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="h6">Zone</label>
+                                <input type="text" [(ngModel)]="selectedZone.naam" class="form-control"
+                                    #userName="ngModel" name="zone" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" (click)="updateZone()">Verander</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Annuleren</button>
+                </div>
+            </ng-template>
+        </div>
+    </section>
+</div>

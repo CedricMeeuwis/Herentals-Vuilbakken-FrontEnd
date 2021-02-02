@@ -1,0 +1,41 @@
+<div class="addZone">
+    <section id="general" class="bootstrapCard">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Zones</h2>
+                <p>Zone toevoegen</p>
+            </div>
+                <div class="d-flex align-items-stretch card-margin d-flex justify-content-center">
+                    <div class="card" style="width: 35rem; height: 24rem;">
+                        <h4 class="card-header text-center">
+                            <a class="fa-stack fa-3x">
+                                <i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </h4>
+                        <div class="card-body shadow">
+                            <div class="d-flex justify-content-center form_container">
+                                <form #userForm="ngForm" (ngSubmit)="addZone()">
+                                    <p class="h6">Naam:</p>
+                                    <div class="input-group mb-3">
+                                        <input [(ngModel)]="newZone.naam" name="zone" type="text"
+                                            class="form-control" id="zone" placeholder="Zone" required />
+                                    </div>
+                                  
+                                    <div class="row addZonebakButtons">
+                                        <div class="col-12 col-sm-6 text-center text-sm-right mt-2">
+                                            <button type="submit" class="btn btn-primary addButton"
+                                                [disabled]="!userForm.form.valid">Toevoegen</button>
+                                        </div>
+                                        <div class="col-12 col-sm-6 text-center text-sm-left mt-2">
+                                            <button class="btn btn-danger cancelButton" (click)="terug()">Annuleren</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>

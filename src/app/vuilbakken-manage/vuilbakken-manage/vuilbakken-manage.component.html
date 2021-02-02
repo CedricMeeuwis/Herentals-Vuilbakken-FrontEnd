@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+<div class="vuilnisbakken">
+    <section id="general" class="bootstrapCard">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Vuilbakken</h2>
+                <p>Overzicht vuilbakken</p>
+            </div>
+            <mat-spinner *ngIf="vuilbakken == null"></mat-spinner>
+            <div *ngIf="vuilbakken != null" class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Vuilbakken</h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="modal-title" (click)="navigateNieuw()" class="btn btn-success"
+                                    data-toggle="modal"><i
+                                        class="material-icons">&#xE147;</i><span>Toevoegen</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Straat</th>
+                                <th scope="col">Coöridnaten</th>
+                                <th scope="col">Zone</th>
+                                <th scope="col">Max volume</th>
+                                <th scope="col">Acties</th>
+                            </tr>
+                        </thead>
+                        <ng-container>
+                            <tbody>
+                                <tr *ngFor="let vuilbak of vuilbakken">
+                                    <td>{{vuilbak.straat}}</td>
+                                    <td>{{vuilbak.breedtegraad}} - {{vuilbak.lengtegraad}}</td>
+                                    <td>
+                                        <span *ngIf="vuilbak.zone == null">
+                                            Nog niet toegewezen
+                                        </span>
+                                        <span *ngIf="vuilbak.zone != null">
+                                            {{vuilbak.zone.naam}}
+                                        </span>
+                                    </td>
+                                    <td>{{vuilbak.wanneerVol}}</td>
+                                    <td>
+                                        <a (click)="open(edit, vuilbak)" class="edit" data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                        </a>
+                                        <a (click)="open(delete, vuilbak)" class="delete" data-toggle="modal">
+                                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </ng-container>
+                    </table>
+                </div>
+            </div>
+
+            <!--Modal voor delete-->
+            <ng-template #delete let-modal>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-basic-title">Delete bevestiging</h2>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>U bent op het punt om een vuilbak in de <b>{{selectedVuilbak.straat}}</b> te verwijderen!</label>
+                            <p>Gelieve om de straatnaam in te geven voor bevestiging dat u deze vuilbak wilt
+                                verwijderen</p>
+                            <div class="input-group">
+                                <input *ngIf="selectedVuilbak != null" [(ngModel)]="confirmDelete" class="form-control"
+                                    placeholder="{{selectedVuilbak.straat}}" name="confirmName">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteVuilbak()"
+                        [disabled]="confirmDelete != selectedVuilbak.straat">Verwijder</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="close()">Annuleren</button>
+                </div>
+            </ng-template>
+
+            <!--Modal voor edit-->
+            <ng-template #edit let-modal>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-basic-title">Bewerk vuilbak</h2>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="h6">Straat</label>
+                                <input type="text" [(ngModel)]="selectedVuilbak.straat" class="form-control"
+                                    #userName="ngModel" name="straat" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Coördinaten - Lengtegraad</label>
+                                <input type="number" [(ngModel)]="selectedVuilbak.lengtegraad" class="form-control"
+                                    #userName="ngModel" name="coördinaten" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Coördinaten - Breedtegraad</label>
+                                <input type="number" [(ngModel)]="selectedVuilbak.breedtegraad" class="form-control"
+                                    #userName="ngModel" name="breedtegraad" required>
+                            </div>
+                            <label class="h6">Zone</label>
+                            <mat-spinner *ngIf="zones == null"></mat-spinner>
+                            <div class="form-group">
+                                <div *ngIf="zones != null" class="input-group">
+                                    <select class="form-control" aria-label="Zone" name="zone"
+                                        [(ngModel)]="selectedVuilbak.zone.zoneID">
+                                        <ng-container *ngFor="let zone of zones">
+                                            <option [ngValue]="zone.zoneID">
+                                                {{zone.naam}}
+                                            </option>
+                                        </ng-container>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="h6">Max Volume</label>
+                                <input type="number" [(ngModel)]="selectedVuilbak.wanneerVol" class="form-control"
+                                    #userName="ngModel" name="maxVolume" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" (click)="updateVuilbak()">Verander</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('')">Annuleren</button>
+                </div>
+            </ng-template>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,34 @@
+@import '../../../scss/variables';
+
+.addZone {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.addZone .addZonebakButtons{
+    margin-top: 25px !important;
+}
+
+.addZone .addZonebakButtons .addButton{
+    background-color: $review !important;
+  }
+
+ .addZone .addZonebakButtons .addButton:hover{
+    background-color: $reviewHover !important;
+  }
+
+.addZone .addZonebakButtons .cancelButton{
+    background-color: $deleteColor !important;
+  }
+
+.addZone .addZonebakButtons .cancelButton:hover{
+    background-color: $deleteHover !important;
+  }
+
+
+
+.card-body{
+    margin-top: -30px !important;
+}
