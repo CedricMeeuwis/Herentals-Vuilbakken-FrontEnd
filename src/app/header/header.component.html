@@ -6,12 +6,19 @@
       <button (click)="changeOverlay()" *ngIf="isMobile && overlayOn" type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-close"></i></button>
       <nav *ngIf="isMobile && overlayOn" class="mobile-nav d-lg-none">
         <ul>
-          <li><a (click)="clickLink()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-          <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/enquete" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete</a></li>
-          <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/vuilbakken" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vuilbakken</a></li>
-          <li *ngIf="myRole != ''"><a (click)="clickLink()" href="https://yoriv.sinners.be/">Schema's</a></li>
-          <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a (click)="clickLink()" routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
-          <li *ngIf="myRole == 'Admin'"><a (click)="clickLink()" routerLink="/enquetes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete beheer</a></li>
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+          <li *ngIf="myRole == ''"><a routerLink="/enquete" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete</a></li>
+          <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a href="https://visualisaties.netlify.app/">Schema's</a></li>
+          <li *ngIf="myRole != ''"><a routerLink="/vuilbakken" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vuilbakken</a></li>
+          <li *ngIf="myRole == 'Admin'"><a routerLink="/enquete-antwoord" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquetes</a></li>
+          <li class="drop-down" *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a href="">Beheer</a>
+            <ul>
+              <li *ngIf="myRole != ''"><a routerLink="/vuilbakken-manage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Beheer vuilbakken</a></li>
+              <li *ngIf="myRole != ''"><a routerLink="/zones-manage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Beheer zones</a></li>
+              <li *ngIf="myRole == 'Admin'"><a routerLink="/enquetes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete beheer</a></li>
+              <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Beheer gebruikers</a></li>
+            </ul>
+          </li>
           <li *ngIf="myRole == ''"><a (click)="clickLink()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
           <li *ngIf="myRole != ''"><a (click)="clickLink()" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
         </ul>
@@ -28,11 +35,12 @@
               <li *ngIf="myRole == ''"><a routerLink="/enquete" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete</a></li>
               <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a href="https://visualisaties.netlify.app/">Schema's</a></li>
               <li *ngIf="myRole != ''"><a routerLink="/vuilbakken" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Vuilbakken</a></li>
-              <li *ngIf="myRole == 'Admin'"><a routerLink="/enquetes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete beheer</a></li>
+              <li *ngIf="myRole == 'Admin'"><a routerLink="/enquete-antwoord" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquetes</a></li>
               <li class="drop-down" *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a href="">Beheer</a>
                 <ul>
                   <li *ngIf="myRole != ''"><a routerLink="/vuilbakken-manage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Beheer vuilbakken</a></li>
                   <li *ngIf="myRole != ''"><a routerLink="/zones-manage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Beheer zones</a></li>
+                  <li *ngIf="myRole == 'Admin'"><a routerLink="/enquetes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Enquete beheer</a></li>
                   <li *ngIf="myRole == 'Admin' || myRole == 'Groendienst'"><a routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Beheer gebruikers</a></li>
                 </ul>
               </li>
