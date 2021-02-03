@@ -34,8 +34,9 @@ export class NewVuilbakComponent implements OnInit {
   }
 
   addVuilbak() {
-    this.newVuilbak.lengtegraad = Math.max(51.10095321093614, Math.min(51.217455822829095, this.newVuilbak.lengtegraad));
-    this.newVuilbak.breedtegraad = Math.max(4.772506558177669, Math.min(4.88736353932897, this.newVuilbak.breedtegraad));
+    this.newVuilbak.wanneerVol = Math.max(20, this.newVuilbak.wanneerVol);
+    this.newVuilbak.lengtegraad = Math.max(4.772506558177669 , Math.min(4.88736353932897, this.newVuilbak.lengtegraad));
+    this.newVuilbak.breedtegraad = Math.max(51.10095321093614, Math.min(51.217455822829095, this.newVuilbak.breedtegraad));
 
     this.newVuilbak.volheid = Math.random() * this.newVuilbak.wanneerVol;
     this.newVuilbak.gewicht = (this.newVuilbak.volheid/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1300);

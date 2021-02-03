@@ -37,20 +37,19 @@ export class VuilbakkenManageComponent implements OnInit {
    haalVuilbakkenOp(){
      this._manageVuilbakkenService.getVuilbakken().subscribe(result =>{
       this.vuilbakken=result;
-      console.log(JSON.stringify(result));
      })
    }
 
    haalZonesOp(){
     this._zoneService.getZones().subscribe(result=>{
       this.zones=result;
-      console.log(JSON.stringify(result));
     })
    }
 
    deleteVuilbak(){
     if(this.confirmDelete == this.selectedVuilbak.straat){
       this._manageVuilbakkenService.deleteVuilbak(this.selectedVuilbak.vuilbakID).subscribe(e => {
+        this._manageVuilbakkenService.getVuilbakken().subscribe();
       });
       this.confirmDelete = "";
       this.modalService.dismissAll();
