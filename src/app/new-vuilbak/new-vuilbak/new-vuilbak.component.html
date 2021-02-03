@@ -45,9 +45,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="h6">Max volume:</p>
+                                    <p class="h6">Max volume (hoogte in cm):</p>
                                     <div class="input-group mb-3">
-                                        <input [(ngModel)]="newVuilbak.wanneerVol" name="wanneerVol" type="number"
+                                        <input [(ngModel)]="newVuilbak.wanneerVol" name="wanneerVol" type="number" min="20"
                                             class="form-control" id="wanneerVol" placeholder="Max Volume" required />
                                     </div>
                                     <div class="row">
