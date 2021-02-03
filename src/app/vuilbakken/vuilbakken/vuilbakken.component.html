@@ -22,14 +22,14 @@
                                     </h1>
                                 </div>
                                 <div class="col-8 text-right my-auto">
-                                    
-                              
-                                            <button (click)="toggleFire()" *ngIf="fireFilter == false"
-                                                class="btn btn-danger brandKnop">Brand noodknop <i
-                                                    class="fas fa fa-fire-alt brandIcoon"></i></button>
-                                            <button (click)="toggleFire()" *ngIf="fireFilter == true"
-                                                class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i
-                                                    class="fas fa-dumpster"></i></button>
+
+
+                                    <button (click)="toggleFire()" *ngIf="fireFilter == false"
+                                        class="btn btn-danger brandKnop">Brand noodknop <i
+                                            class="fas fa fa-fire-alt brandIcoon"></i></button>
+                                    <button (click)="toggleFire()" *ngIf="fireFilter == true"
+                                        class="btn btn-danger vuilbakKnop">Toon vuilnisbakken <i
+                                            class="fas fa-dumpster"></i></button>
 
                                 </div>
                             </div>
@@ -48,8 +48,8 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <input type="text" [(ngModel)]="straatFilter" name="straat"
-                                                    class="form-control" />
-                                                    </div>
+                                                        class="form-control" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -66,25 +66,27 @@
                                                     <div *ngIf="editMode">
                                                         <div class="row">
                                                             <div class="col-3 col-md-6">
-                                                                
+
                                                             </div>
                                                             <div class="col-3 col-md-2 text-right my-auto">
                                                                 <i (click)="openAdd(zoneW)" class="fas fa-plus add"></i>
                                                             </div>
                                                             <div class="col-3 col-md-2 text-right my-auto">
-                                                                <i (click)="openChange(zoneW)" class="fas fa-pen edit"></i>
+                                                                <i (click)="openChange(zoneW)"
+                                                                    class="fas fa-pen edit"></i>
                                                             </div>
                                                             <div class="col-3 col-md-2 text-right my-auto">
-                                                                <i (click)="openDelete(zoneD)" class="fas fa-trash delete"></i>
+                                                                <i (click)="openDelete(zoneD)"
+                                                                    class="fas fa-trash delete"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                            </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-8 col-md-9">
+                                            <div class="row">
+                                                <div class="col-8 col-md-9">
                                                     <select name="zone" class="form-control" id="zone" aria-label="Zone"
                                                         *ngIf="alleZones == null">
                                                         <option>Laden...</option>
@@ -98,15 +100,16 @@
                                                             </option>
                                                         </ng-container>
                                                     </select>
+                                                </div>
+                                                <div class="col-4 col-md-3 text-right my-auto">
+                                                    <button (click)="toggleEditMode(true)" value="wijzigen"
+                                                        *ngIf="editMode == false"
+                                                        class="btn btn-danger vuilbakKnop">Bewerk</button>
+                                                    <button (click)="toggleEditMode(false)" value="filter"
+                                                        *ngIf="editMode"
+                                                        class="btn btn-danger vuilbakKnop">Klaar</button>
+                                                </div>
                                             </div>
-                                            <div class="col-4 col-md-3 text-right my-auto">
-                                                <button (click)="toggleEditMode(true)" value="wijzigen"
-                                                *ngIf="editMode == false"
-                                                class="btn btn-danger vuilbakKnop">Bewerk</button>
-                                            <button (click)="toggleEditMode(false)" value="filter" *ngIf="editMode"
-                                                class="btn btn-danger vuilbakKnop">Klaar</button>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +119,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="slider" class="form-label">Alle vuilbakken ophalen binnen:
+                                            <label for="slider" class="form-label">Vuilbakken ophalen binnen:
                                                 <b *ngIf="aantalDagenOphalen > 0">{{aantalDagenOphalen}}</b>
                                                 <span *ngIf="aantalDagenOphalen == -1">
                                                     <b>(Toon alles)</b>
@@ -160,6 +163,25 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-11 col-12">
+                    <div class="row">
+                        <div class="col-lg-7 col-sm-5 col-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    Kaart op te halen vuilbakken
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-sm-7 col-12 text-left">
+                            <a href="https://visualisaties.netlify.app/map" target="blank" class="btn btn-danger vuilbakKnop">Open kaart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-sm-1 col-12"></div>
+            </div>
+
             <mat-spinner *ngIf="vuilbakData == null"></mat-spinner>
             <div class="row" *ngIf="vuilbakData != null">
                 <ng-container *ngFor="let vuilbak of vuilbakData; let i = index">
