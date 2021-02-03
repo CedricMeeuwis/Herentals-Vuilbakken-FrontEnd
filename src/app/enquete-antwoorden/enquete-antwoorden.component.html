@@ -1,1 +1,11 @@
-<survey-analytics *ngIf="json !=null && answers != null" [json]="json" [answers]="answers"></survey-analytics>
+<div class="enquetes">
+    <section id="general" class="bootstrapCard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enquete</h2>
+                <p>Enquete {{currentEnquete.naam}}:</p>
+            </div>
+            <survey-analytics *ngIf="json !=null && answers != null" [json]="json" [answers]="answers"></survey-analytics>
+        </div>
+    </section>
+</div>

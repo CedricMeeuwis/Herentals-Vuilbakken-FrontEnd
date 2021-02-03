@@ -1,4 +1,11 @@
-<section>
-    <p class="h4 mb-4 pl-2">Herentals Enquete:</p>
-    <survey *ngIf="json != null" [json]="json" [writeFunction]="sendEnquete"></survey>
-</section>
+<div class="enquetes">
+    <section id="general" class="bootstrapCard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enquete</h2>
+                <p>Enquete {{currentEnquete.naam}}:</p>
+            </div>
+            <survey *ngIf="json != null" [json]="json" [writeFunction]="sendEnquete"></survey>
+        </div>
+    </section>
+</div>

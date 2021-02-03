@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EnqueteService } from '../enquete-edit/enquete.service';
+import { Enquete } from '../shared/models/enquete';
 import { AntwoordService } from './antwoord.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class EnqueteAntwoordenComponent implements OnInit {
 
   json = null;
   answers = null;
+  currentEnquete: Enquete;
 
   constructor(private enqueteService: EnqueteService, private antwoordService: AntwoordService) { 
     enqueteService.getActiveEnquete().subscribe(val => {
@@ -25,6 +27,10 @@ export class EnqueteAntwoordenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.enqueteService.getActiveEnquete().subscribe(val => {
+      this.currentEnquete = val;
+      this.json = JSON.parse(val.jsonData);
+    });
   }
 
 }
