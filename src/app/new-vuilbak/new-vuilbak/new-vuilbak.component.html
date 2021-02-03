@@ -35,13 +35,13 @@
                                         <div class="col-6">
                                             <div class="input-group mb-3">
                                                 <input [(ngModel)]="newVuilbak.lengtegraad" name="lengtegraad" type="number"
-                                                    class="form-control" id="lengtegraad" placeholder="Lengtegraad" required />
+                                                    class="form-control" id="lengtegraad" placeholder="Lengtegraad" required min="51.10095321093614" max="51.217455822829095"/>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group mb-3">
                                                 <input [(ngModel)]="newVuilbak.breedtegraad" name="breedtegraad" type="number"
-                                                    class="form-control" id="breedtegraad" placeholder="Breedtegraad" required />
+                                                    class="form-control" id="breedtegraad" placeholder="Breedtegraad" required min="4.772506558177669" max="4.88736353932897" />
                                             </div>
                                         </div>
                                     </div>
@@ -55,9 +55,10 @@
                                             <p class="h6">Zone:</p>
                                             <div class="input-group mb-3" style="margin-top: 15px !important;">
                                                 <div class="input-group-append">
-                                                    <select [(ngModel)]="zoneID" name="zone" class="form-control"id="zone" aria-label="Zone" required>
+                                                    <select [(ngModel)]="newVuilbak.zoneID" name="zone" class="form-control"id="zone" aria-label="Zone">
+                                                        <option [ngValue]="null">Zone (optioneel)</option>
                                                         <ng-container *ngFor="let zone of zones">
-                                                            <option [value]="zone.zoneID">
+                                                            <option [ngValue]="zone.zoneID">
                                                                 {{zone.naam}}
                                                             </option>
                                                         </ng-container>

@@ -35,4 +35,7 @@ export class EnquetesComponent implements OnInit {
   navigateNieuw(){
     this.router.navigate(["enquete-nieuw"]);
   }
+  getAnswers(id: number){
+    this.router.navigate(["/enquete-antwoord", id]);
+  }
 }

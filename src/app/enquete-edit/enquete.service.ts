@@ -19,6 +19,9 @@ export class EnqueteService {
     this.refresh(output);
     return output;
   }
+  getEnquete(id: number): Observable<Enquete>{
+    return this._httpClient.get<Enquete>(this.enqueteUrl + "/" + id);
+  }
   addEnquete(enquete: Enquete): Observable<Enquete>{
     return this._httpClient.post<Enquete>(this.enqueteUrl, enquete);
   }
