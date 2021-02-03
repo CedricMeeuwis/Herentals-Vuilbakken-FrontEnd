@@ -38,7 +38,7 @@ export class NewVuilbakComponent implements OnInit {
     this.newVuilbak.breedtegraad = Math.max(4.772506558177669, Math.min(4.88736353932897, this.newVuilbak.breedtegraad));
 
     this.newVuilbak.volheid = Math.random() * this.newVuilbak.wanneerVol;
-    this.newVuilbak.gewicht = (this.newVuilbak.volheid/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1800);
+    this.newVuilbak.gewicht = (this.newVuilbak.volheid/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1300);
     
     this._manageVuilbakService.newVuilbak(this.newVuilbak).subscribe(result =>{
       this.addVuilbakLogging(result);
@@ -52,14 +52,14 @@ export class NewVuilbakComponent implements OnInit {
       newVol = (Math.random() * 15) + vuilbak.wanneerVol - 15;
     }
     today.setDate(today.getDate()-1);
-    let vuilbakLog = new VuilbakLogging(newVol, (newVol/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1800), today, vuilbak.vuilbakID);
+    let vuilbakLog = new VuilbakLogging(newVol, (newVol/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1300), today, vuilbak.vuilbakID);
     this._manageVuilbakLoggingService.addVuilbakLogging(vuilbakLog).subscribe(val => {
       newVol = val.volheid - Math.random() * 15;
       if(vuilbak.volheid <= 15){
         newVol = (Math.random() * 15) + vuilbak.wanneerVol - 15;
       }
       today.setDate(today.getDate()-1);
-      let vuilbakLog2 = new VuilbakLogging(newVol, (newVol/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1800), today, vuilbak.vuilbakID);
+      let vuilbakLog2 = new VuilbakLogging(newVol, (newVol/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1300), today, vuilbak.vuilbakID);
       this._manageVuilbakLoggingService.addVuilbakLogging(vuilbakLog2).subscribe();
     });
   }

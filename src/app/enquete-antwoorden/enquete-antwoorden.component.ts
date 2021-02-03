@@ -30,6 +30,7 @@ export class EnqueteAntwoordenComponent implements OnInit {
           });
         });
       });
+    });
   }
 
 }
