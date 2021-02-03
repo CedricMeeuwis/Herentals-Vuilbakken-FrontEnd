@@ -1,4 +1,5 @@
-// We need to use ::ng-deep to overcome view encapsulation
+@import "../../../scss/variables";
+
 ::ng-deep {
     .volheidSlider .ngx-slider .ngx-slider-pointer {
         width: 15px;
@@ -21,3 +22,40 @@
         height: 12.8px !important;
       }
   }
+
+  .add{
+
+  }
+
+  .edit{
+
+  }
+
+  .delete{
+
+  }
+
+  table.table td a:hover {
+	color: #2196F3;
+}
+.edit {
+	color: $editColor;
+}
+.edit:hover {
+    color: $editHover;
+    cursor: pointer;
+}
+.delete {
+	color: $deleteColor;
+}
+.delete:hover {
+    color: $deleteHover;
+    cursor: pointer;
+}
+.add {
+	color: $review;
+}
+.add:hover {
+    color: $reviewHover;
+    cursor: pointer;
+}

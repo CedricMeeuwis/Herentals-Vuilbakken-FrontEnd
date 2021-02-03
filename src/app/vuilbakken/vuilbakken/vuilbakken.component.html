@@ -69,13 +69,13 @@
                                                                 
                                                             </div>
                                                             <div class="col-3 col-md-2 text-right my-auto">
-                                                                <i (click)="openAdd(zoneW)" class="fas fa-plus"></i>
+                                                                <i (click)="openAdd(zoneW)" class="fas fa-plus add"></i>
                                                             </div>
                                                             <div class="col-3 col-md-2 text-right my-auto">
-                                                                <i (click)="openChange(zoneW)" class="fas fa-pen"></i>
+                                                                <i (click)="openChange(zoneW)" class="fas fa-pen edit"></i>
                                                             </div>
                                                             <div class="col-3 col-md-2 text-right my-auto">
-                                                                <i (click)="openDelete(zoneD)" class="fas fa-trash"></i>
+                                                                <i (click)="openDelete(zoneD)" class="fas fa-trash delete"></i>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -226,11 +226,8 @@
                                     <div class="card-text align-items-center d-flex justify-content-center">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
-                                                <h2 class="align-items-center d-flex justify-content-center">Vuilbak %
-                                                    vol:
-                                                </h2>
                                                 <circle-progress
-                                                    class="align-items-center d-flex justify-content-center shadow"
+                                                    class="align-items-center d-flex justify-content-center"
                                                     [percent]="perc" [radius]="100" [subtitle]="getText(perc)"
                                                     [backgroundPadding]="0" [radius]="85" [outerStrokeWidth]="12"
                                                     titleFontSize='25' subtitleFontSize='20' [innerStrokeWidth]="5"
