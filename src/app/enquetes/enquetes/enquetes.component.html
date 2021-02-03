@@ -27,7 +27,8 @@
               <tr>
                 <th scope="col">Naam</th>
                 <th class="text-center" scope="col">Status</th>
-                <th scope="col">Zet actief</th>
+                <th class="text-center" scope="col">Zet actief</th>
+                <th class="text-center" scope="col">Kijk antwoorden</th>
               </tr>
             </thead>
             <ng-container *ngFor="let enquete of enquetes">
@@ -36,7 +37,8 @@
                   <td>{{enquete.naam}}</td>
                   <td *ngIf="enquete.actief" class="text-center"><span><i class="fas fa-circle text-success"></i></span></td>
                   <td *ngIf="!enquete.actief" class="text-center"><span><i class="fas fa-circle text-danger"></i></span></td>
-                  <td><i class="fas fa-cog text-info icoon" (click)="setActive(enquete)"></i></td>
+                  <td class="text-center"><i class="fas fa-cog text-info icoon" (click)="setActive(enquete)"></i></td>
+                  <td class="text-center"><i class="fas fa-long-arrow-alt-right text-warning icoon" (click)="getAnswers(enquete.enqueteID)"></i></td>
                 </tr>
               </tbody>
             </ng-container>

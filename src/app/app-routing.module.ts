@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'enquetes', component: EnquetesComponent, canActivate: [AuthAdminGuard] },
   { path: 'enquete-nieuw', component: EnqueteEditComponent, canActivate: [AuthAdminGuard] },
   { path: 'enquete', component: EnqueteComponent},
-  { path: 'enquete-antwoord', component: EnqueteAntwoordenComponent, canActivate: [AuthAdminGuard] },
+  { path: 'enquete-antwoord/:id', component: EnqueteAntwoordenComponent, canActivate: [AuthAdminGuard] },
   { path: 'nieuwe-vuilbak', component: NewVuilbakComponent, canActivate: [AuthManagersGuard] },
   { path: 'nieuwe-zone', component: NewZoneComponent, canActivate: [AuthManagersGuard] },
 ];

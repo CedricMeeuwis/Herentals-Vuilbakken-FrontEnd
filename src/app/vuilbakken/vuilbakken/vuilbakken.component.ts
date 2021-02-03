@@ -194,7 +194,7 @@ export class VuilbakkenComponent implements OnInit {
       gram = Math.round(gram * 100) / 100
       return gram.toString() + "kg";
     }
-    return gram.toString() + "g";
+    return (Math.round(gram * 100) / 100).toString() + "g";
   }
   //Ophaal en bouwen van vuilbak data
   BouwVuilbakkenOp(data){

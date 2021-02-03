@@ -122,7 +122,8 @@
                             <div class="form-group">
                                 <div *ngIf="zones != null" class="input-group">
                                     <select class="form-control" aria-label="Zone" name="zone"
-                                        [(ngModel)]="selectedVuilbak.zone.zoneID">
+                                        [(ngModel)]="selectedVuilbak.zoneID">
+                                        <option [ngValue]="null">Nog geen toegewezen</option>
                                         <ng-container *ngFor="let zone of zones">
                                             <option [ngValue]="zone.zoneID">
                                                 {{zone.naam}}
