@@ -12,8 +12,6 @@ export class SurveyAnalyticsComponent implements OnInit {
   @Input() answers: any;
   @Output() surveySaved: EventEmitter<Object> = new EventEmitter();
   ngOnInit() {
-    console.log(this.json);
-    console.log(this.answers);
     /*var json = {
       completedHtml:
         "<p style='font-size:24px;'>Thank you for completing the survey! (please wait for analytics to load ...)<p>",

@@ -14,7 +14,7 @@ import { VuilbakLoggingService } from '../vuilbak-logging.service';
 })
 export class NewVuilbakComponent implements OnInit {
 
-  newVuilbak: Vuilbak = new Vuilbak(0, 0, 0, "", 0, 0, null);
+  newVuilbak: Vuilbak = new Vuilbak(0, 0, 0, "", 0, 0, false, null);
   zones: Zone[];
 
   constructor(

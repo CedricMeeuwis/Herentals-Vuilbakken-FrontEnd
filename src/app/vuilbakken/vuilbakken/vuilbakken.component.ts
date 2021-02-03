@@ -80,7 +80,6 @@ export class VuilbakkenComponent implements OnInit {
   //Zone functionaliteit
   toggleEditMode(value: boolean){
     this.editMode = value;
-    console.log(value);
     if(value == true){
       this.done == true;
     } else {

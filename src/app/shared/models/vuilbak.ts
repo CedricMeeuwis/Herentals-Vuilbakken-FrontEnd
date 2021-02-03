@@ -10,7 +10,8 @@ export class Vuilbak {
         public straat: string,
         public breedtegraad: number,
         public lengtegraad: number,
-        public zoneID: number,
+        public brand: boolean,
+        public zoneID?: number,
         public zone?: Zone,
         public vuilbakID?: number,
     ){}
