@@ -28,7 +28,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Straat</th>
-                                <th scope="col">Coöridnaten</th>
+                                <th scope="col">Coördinaten</th>
                                 <th scope="col">Zone</th>
                                 <th scope="col">Max volume</th>
                                 <th scope="col">Acties</th>
@@ -109,12 +109,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="h6">Coördinaten - Lengtegraad</label>
-                                <input type="number" [(ngModel)]="selectedVuilbak.lengtegraad" class="form-control"
-                                    #userName="ngModel" name="coördinaten" required>
+                                <input type="number" [(ngModel)]="selectedVuilbak.lengtegraad" class="form-control" min="4.772506558177669" max="4.88736353932897"
+                                    #userName="ngModel" name="lengtegraad" required>
                             </div>
                             <div class="form-group">
                                 <label class="h6">Coördinaten - Breedtegraad</label>
-                                <input type="number" [(ngModel)]="selectedVuilbak.breedtegraad" class="form-control"
+                                <input type="number" [(ngModel)]="selectedVuilbak.breedtegraad" class="form-control" min="51.10095321093614" max="51.217455822829095"
                                     #userName="ngModel" name="breedtegraad" required>
                             </div>
                             <label class="h6">Zone</label>
@@ -135,7 +135,7 @@
                             <div class="form-group">
                                 <label class="h6">Max Volume</label>
                                 <input type="number" [(ngModel)]="selectedVuilbak.wanneerVol" class="form-control"
-                                    #userName="ngModel" name="maxVolume" required>
+                                    #userName="ngModel" name="maxVolume" min="20" required>
                             </div>
                         </div>
                     </form>

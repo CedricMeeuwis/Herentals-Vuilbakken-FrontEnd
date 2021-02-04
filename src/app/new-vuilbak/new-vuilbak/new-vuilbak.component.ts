@@ -48,19 +48,19 @@ export class NewVuilbakComponent implements OnInit {
   }
   addVuilbakLogging(vuilbak: Vuilbak){
     var today = new Date();
-    var newVol = vuilbak.volheid - Math.random() * 15;
-    if(vuilbak.volheid <= 15){
-      newVol = (Math.random() * 15) + vuilbak.wanneerVol - 15;
+    var newVol = vuilbak.volheid + Math.random() * 15;
+    if(vuilbak.volheid >= vuilbak.wanneerVol - 15){
+      newVol = Math.random() * 15;
     }
     today.setDate(today.getDate()-1);
-    let vuilbakLog = new VuilbakLogging(newVol, (newVol/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1300), today, vuilbak.vuilbakID);
+    let vuilbakLog = new VuilbakLogging(newVol, (1-(newVol/this.newVuilbak.wanneerVol)) * ((Math.random() * 200) + 1300), today, vuilbak.vuilbakID);
     this._manageVuilbakLoggingService.addVuilbakLogging(vuilbakLog).subscribe(val => {
       newVol = val.volheid - Math.random() * 15;
-      if(vuilbak.volheid <= 15){
-        newVol = (Math.random() * 15) + vuilbak.wanneerVol - 15;
+      if(vuilbak.volheid >= vuilbak.wanneerVol - 15){
+        newVol = Math.random() * 15;
       }
       today.setDate(today.getDate()-1);
-      let vuilbakLog2 = new VuilbakLogging(newVol, (newVol/this.newVuilbak.wanneerVol) * ((Math.random() * 200) + 1300), today, vuilbak.vuilbakID);
+      let vuilbakLog2 = new VuilbakLogging(newVol, (1-(newVol/this.newVuilbak.wanneerVol)) * ((Math.random() * 200) + 1300), today, vuilbak.vuilbakID);
       this._manageVuilbakLoggingService.addVuilbakLogging(vuilbakLog2).subscribe();
     });
   }
