@@ -36,6 +36,7 @@ export class ZonesManageComponent implements OnInit {
   deleteZone(){
     if(this.confirmDelete == this.selectedZone.naam){
       this._manageZoneService.deleteZone(this.selectedZone.zoneID).subscribe(e => {
+        this._manageZoneService.getZones().subscribe();
       });
       this.confirmDelete = "";
       this.modalService.dismissAll();
