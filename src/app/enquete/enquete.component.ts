@@ -29,7 +29,7 @@ export class EnqueteComponent implements OnInit {
   }
   async redirect(){
     await this.delay(5000);
-    this.router.navigate(["/enquete"]);
+    location.reload();
   }
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
