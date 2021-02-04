@@ -11,6 +11,7 @@ import { AlertService } from '@full-fledged/alerts';
 import { Options } from "@angular-slider/ngx-slider";
 import { Zone } from '../../shared/models/zone';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -71,6 +72,9 @@ export class VuilbakkenComponent implements OnInit {
         this.BouwVuilbakkenOp(val);
         this.BouwLoggingOp();
       }
+    });
+    interval(300000).subscribe(x => {
+      this._vuilbakService.getVuilbakken();
     });
   }
   ngOnInit(): void {
@@ -224,7 +228,7 @@ export class VuilbakkenComponent implements OnInit {
     var divider = Math.max(1, (lngth - 1));
     for(let j = 0; j < lngth-1; j++){
       //Verschillen berekenen
-      var diff = this.vuilbakData[i].logging[j+1].volheid - this.vuilbakData[i].logging[j].volheid;
+      var diff = this.vuilbakData[i].logging[j].volheid - this.vuilbakData[i].logging[j+1].volheid;
       //Als vuilbak is verminderd tel de rekening er niet bij mee
       if(diff < 0){
         divider = Math.max(1, divider - 1);
@@ -235,16 +239,14 @@ export class VuilbakkenComponent implements OnInit {
     pred = sum/divider;
 
     this.BouwWhenFullOp(pred, i);
-
-    this.vuilbakData[i].prediction = Math.min(100, ((this.vuilbakData[i].vuilbak.volheid + pred)/this.vuilbakData[i].vuilbak.wanneerVol)*100);
   }
   BouwWhenFullOp(pred, i){
     if(pred > 0){
       var check = this.vuilbakData[i].vuilbak.volheid;
       var amount = 0;
-      while(check < 75){
+      while(check > this.vuilbakData[i].vuilbak.wanneerVol * 0.2){
         amount++;
-        check += pred;
+        check -= pred;
       }
       this.vuilbakData[i].whenFull = amount;
     }

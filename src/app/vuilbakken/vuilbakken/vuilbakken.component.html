@@ -171,7 +171,7 @@
                             </div>
                         </div>
                         <div class="col-lg-5 col-sm-7 col-12 text-left">
-                            <a href="https://visualisaties.netlify.app/map" target="blank" class="btn btn-danger vuilbakKnop">Open kaart</a>
+                            <a href="https://visualisaties.netlify.app/map" class="btn btn-danger vuilbakKnop">Open kaart</a>
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
             <div class="row" *ngIf="vuilbakData != null">
                 <ng-container *ngFor="let vuilbak of vuilbakData; let i = index">
                     <ng-container
-                        *ngIf="assignPercentage(vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol*100); let perc">
+                        *ngIf="assignPercentage((1 - (vuilbak.vuilbak.volheid/vuilbak.vuilbak.wanneerVol)) * 100); let perc">
                         <div *ngIf="filterSearch(vuilbak.vuilbak.straat, straatFilter)
                                     && perc >= volhMin
                                     && perc <= volhMax
