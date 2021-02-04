@@ -28,6 +28,7 @@
                 <th scope="col">Naam</th>
                 <th class="text-center" scope="col">Status</th>
                 <th class="text-center" scope="col">Zet actief</th>
+                <th class="text-center" scope="col">Verwijder</th>
                 <th class="text-center" scope="col">Kijk antwoorden</th>
               </tr>
             </thead>
@@ -38,13 +39,40 @@
                   <td *ngIf="enquete.actief" class="text-center"><span><i class="fas fa-circle text-success"></i></span></td>
                   <td *ngIf="!enquete.actief" class="text-center"><span><i class="fas fa-circle text-danger"></i></span></td>
                   <td class="text-center"><i class="fas fa-cog text-info icoon" (click)="setActive(enquete)"></i></td>
+                  <td class="text-center"><i class="fas fa-trash text-danger icoon" (click)="open(delete, enquete)"></i></td>
                   <td class="text-center"><i class="fas fa-long-arrow-alt-right text-warning icoon" (click)="getAnswers(enquete.enqueteID)"></i></td>
                 </tr>
               </tbody>
             </ng-container>
           </table>
         </div>
+        <!--Modal voor delete-->
+        <ng-template #delete let-modal>
+          <div class="modal-header">
+            <h2 class="modal-title" id="modal-basic-title">Delete bevestiging</h2>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>U bent op het punt om <b>{{selectedEnquete.naam}}</b> te verwijderen!</label>
+                <p>Gelieve om zijn naam in te geven voor bevestiging dat u deze enquete wilt verwijderen</p>
+                <div class="input-group">
+                  <input *ngIf="selectedEnquete != null" [(ngModel)]="confirmDelete" class="form-control"
+                    placeholder="{{selectedEnquete.naam}}" name="confirmName">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" (click)="deleteEnquete()"
+              [disabled]="confirmDelete != selectedEnquete.naam">Verwijder</button>
+            <button type="button" class="btn btn-outline-dark" (click)="close()">Annuleren</button>
+          </div>
+        </ng-template>
+      </div>
     </div>
-</div>
-</section>
+  </section>
 </div>
