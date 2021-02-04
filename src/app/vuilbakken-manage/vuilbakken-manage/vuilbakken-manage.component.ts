@@ -57,6 +57,10 @@ export class VuilbakkenManageComponent implements OnInit {
   }
 
   updateVuilbak(){
+    this.selectedVuilbak.wanneerVol = Math.max(20, this.selectedVuilbak.wanneerVol);
+    this.selectedVuilbak.lengtegraad = Math.max(4.772506558177669 , Math.min(4.88736353932897, this.selectedVuilbak.lengtegraad));
+    this.selectedVuilbak.breedtegraad = Math.max(51.10095321093614, Math.min(51.217455822829095, this.selectedVuilbak.breedtegraad));
+
     this._manageVuilbakkenService.changeVuilbak(this.selectedVuilbak).subscribe(e => {
       this._manageVuilbakkenService.getVuilbakken().subscribe();
     });

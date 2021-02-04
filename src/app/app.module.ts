@@ -30,6 +30,7 @@ import { EnqueteAntwoordenComponent } from './enquete-antwoorden/enquete-antwoor
 import { SurveyAnalyticsComponent } from './survey/survey.analytics.component';
 import { SurveyAnalyticsDatatablesComponent } from './survey/survey.analytics.datatables';
 import { SurveyAnalyticsTabulatorComponent } from './survey/survey.analytics.tabulator';
+import { AlertModule } from '@full-fledged/alerts';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SurveyAnalyticsTabulatorComponent } from './survey/survey.analytics.tab
     EnqueteAntwoordenComponent
   ],
   imports: [
+    AlertModule.forRoot({maxMessages: 5, timeout: 10000, positionY: 'bottom'}),
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,

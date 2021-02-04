@@ -37,10 +37,10 @@ export class VuilbakkenComponent implements OnInit {
       if (this.volhMin <= 55 && this.volhMax <=55) {
           return '#42BD50';
       }
-      if (this.volhMin >55  && this.volhMax <=75 || this.volhMin <=75 && this.volhMax <=75) {
+      if (this.volhMin > 55  && this.volhMax <=75 || this.volhMin <= 75 && this.volhMax <= 75) {
           return '#FFC107';
       }
-      if (this.volhMin >75 || this.volhMax >75) {
+      if (this.volhMin > 75 || this.volhMax > 75) {
           return '#F44336';
       }
       return '#2AE02A';
