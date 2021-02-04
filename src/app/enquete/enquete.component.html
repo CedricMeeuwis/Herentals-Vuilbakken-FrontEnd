@@ -3,7 +3,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Enquete</h2>
-                <p>Enquete {{currentEnquete.naam}}:</p>
+                <p>Enquete<span *ngIf="currentEnquete != null"> {{currentEnquete.naam}}</span>:</p>
             </div>
             <survey *ngIf="json != null" [json]="json" [writeFunction]="sendEnquete"></survey>
         </div>

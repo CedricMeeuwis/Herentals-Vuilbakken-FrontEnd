@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from '@full-fledged/alerts';
 import { Enquete } from '../shared/models/enquete';
 import { EnqueteService } from './enquete.service';
 
@@ -13,7 +14,7 @@ export class EnqueteEditComponent implements OnInit {
   json = JSON.parse(localStorage.getItem("test"));
 
   savedEnquete = new Enquete('','', false);
-  constructor(private enqueteService: EnqueteService, private router: Router) {
+  constructor(private enqueteService: EnqueteService, private router: Router, private alertService: AlertService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class EnqueteEditComponent implements OnInit {
         this.savedEnquete = val;
       });
     }
+    this.alertService.success("Enquete is opgeslagen");
   }
   goBack(){
     this.router.navigate(['enquetes']);
