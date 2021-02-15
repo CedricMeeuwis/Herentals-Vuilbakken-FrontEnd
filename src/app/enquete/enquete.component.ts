@@ -3,7 +3,7 @@ import { EnqueteService } from '../enquete-edit/enquete.service';
 import { AntwoordService } from '../enquete-antwoorden/antwoord.service';
 import { Antwoord } from '../shared/models/antwoord';
 import { Enquete } from '../shared/models/enquete';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-enquete',
@@ -11,15 +11,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./enquete.component.scss']
 })
 export class EnqueteComponent implements OnInit {
-
   json = null;
   currentEnquete: Enquete;
-  constructor(private enqueteService: EnqueteService, private antwoordService: AntwoordService, private router: Router) { }
+  constructor(private enqueteService: EnqueteService, private antwoordService: AntwoordService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.enqueteService.getActiveEnquete().subscribe(val => {
-      this.currentEnquete = val;
-      this.json = JSON.parse(val.jsonData);
+    this.route.params.subscribe(param =>{
+      let id = param['id'];
+      this.enqueteService.getEnquete(id).subscribe(val => {
+        if(!val.actief){
+          this.router.navigate(['/']);
+        }
+        this.currentEnquete = val;
+        this.json = JSON.parse(val.jsonData);
+      }, error => {
+        this.router.navigate(['/']);
+      });
     });
   }
   sendEnquete = (args:any): void => {
@@ -32,6 +39,6 @@ export class EnqueteComponent implements OnInit {
     location.reload();
   }
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+    return new Promise( resolve => setTimeout(resolve, ms));
+  }
 }
