@@ -13,7 +13,7 @@ export class EnqueteEditComponent implements OnInit {
 
   json = JSON.parse(localStorage.getItem("test"));
 
-  savedEnquete = new Enquete('','', false);
+  savedEnquete = new Enquete('','', false, '');
   constructor(private enqueteService: EnqueteService, private router: Router, private alertService: AlertService) {
   }
 
@@ -25,6 +25,9 @@ export class EnqueteEditComponent implements OnInit {
       this.savedEnquete.naam = workData["title"];
     }else{
       this.savedEnquete.naam = workData["pages"][0]["name"];
+    }
+    if(workData["description"] != null){
+      this.savedEnquete.omschrijving = workData["description"];
     }
     this.savedEnquete.jsonData = JSON.stringify(args);
 
