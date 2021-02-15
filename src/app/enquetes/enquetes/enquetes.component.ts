@@ -25,13 +25,7 @@ export class EnquetesComponent implements OnInit {
   ngOnInit(): void {
     this.enqueteService.getEnquetes().subscribe();
   }
-  async setActive(enquete: Enquete){
-    let result = this.enquetes.filter(x => x.actief == true);
-    result.forEach(async item => {
-      item.actief = false;
-      await this.enqueteService.changeEnquete(item).toPromise();
-    });
-    enquete.actief = true;
+  toggleActive(enquete: Enquete){
     this.enqueteService.changeEnquete(enquete).subscribe(e => {
       this.enqueteService.getEnquetes().subscribe();
     });
