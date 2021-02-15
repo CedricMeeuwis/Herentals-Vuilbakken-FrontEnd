@@ -31,8 +31,8 @@ export class EnqueteService {
   deleteEnquete(id: number): Observable<Enquete>{
     return this._httpClient.delete<Enquete>(this.enqueteUrl + "/" + id);
   }
-  getActiveEnquete(): Observable<Enquete>{
-    return this._httpClient.get<Enquete>(this.enqueteUrl + "/Active");
+  getActiveEnquete(): Observable<Enquete[]>{
+    return this._httpClient.get<Enquete[]>(this.enqueteUrl + "/Active");
   }
   private refresh(output){
     output.subscribe(val =>{

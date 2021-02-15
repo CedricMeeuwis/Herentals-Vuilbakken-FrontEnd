@@ -4,32 +4,32 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero">
    <div class="enquetes-herentals">
-   <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
-      <h2>Welkom bij</h2>
-      <h1>Smart City Herentals</h1>
-      <h2>Mede mogelijk gemaakt door Connect IT </h2>
-      <div class="intro">
-         <div class="row">
-            <div class="col-6">
-               <a href="#enquetes-herentals">
-                  <div class="icon-box">
-                     <div class="icon"><i class="bx bx-body"></i></div>
-                     <h4 class="title">Enquetes</h4>
-                  </div>
-               </a>
-            </div>
+      <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+         <h2>Welkom bij</h2>
+         <h1>Smart City Herentals</h1>
+         <h2>Mede mogelijk gemaakt door Connect IT </h2>
+         <div class="intro">
+            <div class="row">
+               <div class="col-6">
+                  <a href="#enquetes-herentals">
+                     <div class="icon-box">
+                        <div class="icon"><i class="bx bx-body"></i></div>
+                        <h4 class="title">Enquetes</h4>
+                     </div>
+                  </a>
+               </div>
 
-            <div class="col-6">
-               <a href="#informatie">
-                  <div class="icon-box">
-                     <div class="icon"><i class="bx bx-body"></i></div>
-                     <h4 class="title">Informatie</h4>
-                  </div>
-               </a>
+               <div class="col-6">
+                  <a href="#informatie">
+                     <div class="icon-box">
+                        <div class="icon"><i class="bx bx-body"></i></div>
+                        <h4 class="title">Informatie</h4>
+                     </div>
+                  </a>
+               </div>
             </div>
          </div>
       </div>
-   </div>
    </div>
 </section><!-- End Hero -->
 
@@ -44,44 +44,18 @@
                   <p>Enquetes stad Herentals</p>
                </div>
 
-
-               <div class="row">
-                  <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                     <a href="">
-                        <div class="icon-box">
-                           <div class="icon"><i class="bx bx-body"></i></div>
-                           <h4 class="title">Enquete 1</h4>
-                           <p class="description">Vuilbakken</p>
-                        </div>
-                     </a>
+               <div class="row" *ngFor="let enquete of enquetes">
+                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <a (click)="openEnquete(this.enquete.enqueteID)">
+                           <div class="icon-box">
+                              <div class="icon"><i class="bx bx-body"></i></div>
+                              <h4 class="title">Enquete 1</h4>
+                              <p class="description">{{enquete.naam}}</p>
+                              <p>{{enquete}}</p>
+                           </div>
+                        </a>
                   </div>
-
-                  <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                     <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-info-circle"></i></div>
-                        <h4 class="title">Slimme systemen</h4>
-                        <p class="description">Slimmere systemen zorgen voor een stad die denkt voor u.</p>
-                     </div>
-                  </div>
-
-                  <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                     <div class="icon-box">
-                        <div class="icon"><i class="bx bx-trending-up"></i></div>
-                        <h4 class="title">Modernisering</h4>
-                        <p class="description">Afstappen van een stereotype stadsbestuur met integratie van IT.</p>
-                     </div>
-                  </div>
-
-                  <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                     <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-buildings"></i></div>
-                        <h4 class="title">Omgeving</h4>
-                        <p class="description">Zorg voor een groenere en veiligere omgeving.</p>
-                     </div>
-                  </div>
-
                </div>
-
             </div>
          </section><!-- End Services Section -->
       </div>
