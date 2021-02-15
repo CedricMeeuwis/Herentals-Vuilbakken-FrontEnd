@@ -44,7 +44,7 @@ import { AlertModule } from '@full-fledged/alerts';
     SurveyAnalyticsTabulatorComponent,
     EnqueteEditComponent,
     EnqueteComponent,
-    EnqueteAntwoordenComponent
+    EnqueteAntwoordenComponent,
   ],
   imports: [
     AlertModule.forRoot({maxMessages: 5, timeout: 10000, positionY: 'bottom'}),

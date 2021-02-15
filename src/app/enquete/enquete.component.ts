@@ -28,7 +28,7 @@ export class EnqueteComponent implements OnInit {
     this.redirect();
   }
   async redirect(){
-    await this.delay(5000);
+    await this.delay(2000);
     location.reload();
   }
   delay(ms: number) {
