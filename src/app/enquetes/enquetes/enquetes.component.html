@@ -26,8 +26,7 @@
             <thead>
               <tr>
                 <th scope="col">Naam</th>
-                <th class="text-center" scope="col">Status</th>
-                <th class="text-center" scope="col">Zet actief</th>
+                <th class="text-right" scope="col">Actief status</th>
                 <th class="text-center" scope="col">Verwijder</th>
                 <th class="text-center" scope="col">Kijk antwoorden</th>
               </tr>
@@ -36,9 +35,15 @@
               <tbody>
                 <tr>
                   <td>{{enquete.naam}}</td>
-                  <td *ngIf="enquete.actief" class="text-center"><span><i class="fas fa-circle text-success"></i></span></td>
-                  <td *ngIf="!enquete.actief" class="text-center"><span><i class="fas fa-circle text-danger"></i></span></td>
-                  <td class="text-center"><i class="fas fa-cog text-info icoon" (click)="setActive(enquete)"></i></td>
+                  <td class="text-right">
+                    <span *ngIf="enquete.actief">
+                      Actief
+                    </span>
+                    <span *ngIf="!enquete.actief">
+                      Non-actief
+                    </span>
+                    <mat-slide-toggle [(ngModel)]="enquete.actief" (change)="toggleActive(enquete)"></mat-slide-toggle>
+                  </td>
                   <td class="text-center"><i class="fas fa-trash text-danger icoon" (click)="open(delete, enquete)"></i></td>
                   <td class="text-center"><i class="fas fa-long-arrow-alt-right text-warning icoon" (click)="getAnswers(enquete.enqueteID)"></i></td>
                 </tr>

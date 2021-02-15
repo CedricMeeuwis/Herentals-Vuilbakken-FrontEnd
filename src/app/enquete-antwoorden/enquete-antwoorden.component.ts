@@ -14,6 +14,7 @@ export class EnqueteAntwoordenComponent implements OnInit {
   json = null;
   answers = null;
   currentEnquete: Enquete;
+  aantalAntwoorden = 0;
 
   constructor(private enqueteService: EnqueteService, private antwoordService: AntwoordService, private route: ActivatedRoute) { 
   }
@@ -26,6 +27,7 @@ export class EnqueteAntwoordenComponent implements OnInit {
         this.json = JSON.parse(val.jsonData);
         this.antwoordService.getAntwoordenVanEnquete(val.enqueteID).subscribe(val => {
           this.answers = val.map(item => {
+            this.aantalAntwoorden++;
             return JSON.parse(item.jsonData);
           });
         });
