@@ -1,0 +1,127 @@
+@import './variables';
+
+.enquetes-herentals .rijEnquete{
+    padding-bottom: 30px !important;
+  }
+
+  .enquetes-herentals a{
+    text-decoration: none !important;
+    width: 100% !important;
+    color: #111 !important;
+  }
+
+  .enquetes-herentals .intro a{
+    text-decoration: none !important;
+    width: 100% !important;
+    color: white !important;
+    font-weight: bold !important;
+  }
+
+
+  .enquetes-herentals .intro .icon-box  .intro .icon-box::before {
+    text-decoration: none !important;
+    width: 100% !important;
+    color: $primaryGreen !important;
+  }
+
+  .enquetes-herentals .intro .icon-box {
+    padding: 20px 20px;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    overflow: hidden;
+    background: $primaryGreen;
+    box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12);
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+    text-align: center;
+    cursor: pointer !important;
+  }
+
+  .enquetes-herentals .intro .icon-box::before {
+    content: '';
+    position: absolute;
+    background: $primaryGreen;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 100%;
+    transition: all 0.4s;
+    z-index: -1;
+  }
+  
+  .enquetes-herentals .intro .icon-box:hover::before {
+    background: $primaryGreenHover;
+    top: 0;
+    border-radius: 0px;
+  }
+  
+  .enquetes-herentals  .icon-box {
+    padding: 60px 30px;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12);
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+    text-align: center;
+    cursor: pointer !important;
+  }
+  
+  .enquetes-herentals  .icon-box::before {
+    content: '';
+    position: absolute;
+    background: #fdeff2;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 100%;
+    transition: all 0.4s;
+    z-index: -1;
+  }
+  
+  .enquetes-herentals  .icon-box:hover::before {
+    background: $primaryGreen;
+    top: 0;
+    border-radius: 0px;
+  }
+  
+  .enquetes-herentals  .icon {
+    margin-bottom: 15px;
+  }
+  
+  .enquetes-herentals  .icon i {
+    font-size: 48px;
+    line-height: 1;
+    color: #e43c5c;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .enquetes-herentals  .title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold !important;
+  }
+  
+  .enquetes-herentals  .title a {
+    color: #111;
+  }
+  
+  .enquetes-herentals  .description {
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 0;
+  }
+  
+  .enquetes-herentals  .icon-box:hover .title a, .enquetes-herentals .enqueteIf .icon-box:hover .description {
+    color: #fff;
+  }
+  
+  .enquetes-herentals  .icon-box:hover .icon i {
+    color: #fff;
+  }
+  

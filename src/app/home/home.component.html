@@ -44,10 +44,14 @@
                   <p>Enquetes stad Herentals</p>
                </div>
 
+               <p style="padding-bottom: 30px !important;">
+                  Overzicht van alles actieve enquetes van de stad Herentals kan je hier terugvinden. Je hoeft geen account aan te maken om een enquete in te vullen. Alvast bedankt voor jouw feedback!
+               </p>
+
+           
                <div class="row">
                   <ng-container *ngFor="let enquete of enquetes">
-                     <div class="enqueteIf">
-                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                     <div class="col-md-3 rijEnquete">
                         <a (click)="openEnquete(this.enquete.enqueteID)">
                            <div class="icon-box">
                               <div class="icon"><i class="bx bx-body"></i></div>
@@ -55,11 +59,10 @@
                               <p class="enqueteIf" *ngIf="enquete.omschrijving == null || enquete.omschrijving == ''"
                                  class="description">Geen omschrijving</p>
                               <p class="enqueteIf" *ngIf="enquete.omschrijving != null && enquete.omschrijving != ''"
-                                 class="description">Geen omschrijving</p>
+                                 class="description">{{enquete.omschrijving}}</p>
                            </div>
                         </a>
                      </div>
-                  </div>
                   </ng-container>
                </div>
             </div>
