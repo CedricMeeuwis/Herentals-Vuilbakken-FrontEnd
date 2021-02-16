@@ -125,14 +125,18 @@ export class VuilbakkenComponent implements OnInit {
     let zone = new Zone(this.zoneNaamInput, this.selectedZone);
     this._zoneService.changeZone(zone).subscribe(e => {
       this._zoneService.getZones().subscribe();
+      this._vuilbakService.getVuilbakken().subscribe();
     });
     this.modalService.dismissAll();
   }
   deleteZone(){
     this._zoneService.deleteZone(this.selectedZone).subscribe(e => {
       this._zoneService.getZones().subscribe();
+      this._vuilbakService.getVuilbakken().subscribe();
     });
     this.modalService.dismissAll();
+    this.selectedZone = 0;
+
   }
   addZoneToVuilbak(vuilbak: Vuilbak){
     if(this.selectedZone != 0){

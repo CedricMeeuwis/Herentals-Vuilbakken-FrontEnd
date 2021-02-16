@@ -48,6 +48,27 @@
                   Overzicht van alles actieve enquetes van de stad Herentals kan je hier terugvinden. Je hoeft geen account aan te maken om een enquete in te vullen. Alvast bedankt voor jouw feedback!
                </p>
 
+               <ng-container *ngIf="enquetes == null || enquetes.length ==0">
+                  <div class="row">
+                     <div class="col-4">
+
+                     </div>
+                  <div class="col-4 rijEnquete">
+                     <div class="card text-center">
+                        <div class="card-header">
+                          Enquetes
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text">Er zijn nog geen actieve enquetes</p>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-4">
+                        
+                  </div>
+               </div>
+               </ng-container>
+
            
                <div class="row">
                   <ng-container *ngFor="let enquete of enquetes">

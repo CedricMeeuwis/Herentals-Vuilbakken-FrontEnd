@@ -40,6 +40,9 @@
 
               <li class="drop-down"><a href="#enquetes-herentals">Enquetes</a>
                 <ul class="navDropDown">
+                  <ng-container *ngIf="enquetes == null || enquetes.length == 0">
+                    <li >Geen actieve enquetes</li>
+                  </ng-container>
                   <ng-container *ngFor="let enquete of enquetes">
                   <li><a (click)="openEnquete(enquete.enqueteID)">{{enquete.naam}}</a></li>
                 </ng-container>

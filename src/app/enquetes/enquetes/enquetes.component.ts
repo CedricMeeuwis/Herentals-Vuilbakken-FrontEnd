@@ -55,5 +55,6 @@ export class EnquetesComponent implements OnInit {
       });
       this.modalService.dismissAll();
     }
+    this.confirmDelete = "";
   }
 }
