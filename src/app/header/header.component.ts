@@ -34,11 +34,10 @@ export class HeaderComponent implements OnInit {
       this.enquetes=result;
     });
 
-    console.log(JSON.stringify(this.enquetes));
   }
 
   openEnquete(id: number){
-    this.router.navigate(["/enquete-antwoord", id]);
+    this.router.navigate(["/enquete", id]);
   }
 
   logout(){
